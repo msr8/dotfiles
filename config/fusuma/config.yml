@@ -1,0 +1,13 @@
+swipe:
+  3:
+    left:
+      command: "xdotool key super+Right" # History forward
+    right:
+      command: "xdotool key super+Left" # History back
+    up:
+      command: "xmessage test" # Activity
+
+threshold:
+  swipe: 0.5
+interval:
+  swipe: 0.5

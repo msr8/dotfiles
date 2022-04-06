@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Exec=sh -c "conky -d -c ~/.config/conky/conky-clock.conf;"
+Name=Conky-Clock
+Comment=Autostart conky clock widget at login

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Exec=sh -c "conky -d -c ~/.config/conky/conky-stats.conf;"
+Name=Conky-Stats
+Comment=Autostart conky stats widget at login
