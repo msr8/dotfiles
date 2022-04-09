@@ -1,0 +1,111 @@
+(/etc/dnf/dnf.conf)
+fastestmirror=True
+defaultyes=True
+
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install kmod-wl
+sudo yum update
+sudo dnf install @xfce-desktop-environment
+-> Reversed scroll direction
+-> Turned on "tap touchpad to click"
+-> Changed general theme to "Adwita-dark"
+-> Changed gEdit theme to Oblivion
+sudo dnf install python3 python3-pip neofetch cpufetch tmux htop lolcat openssh-server nyancat tor bat lsd florence neovim xmessage timeshift flameshot
+-> In Ternimal, did the following changes:
+  Changed terminal cursor to blinking I beam
+  Changed default geometry to 75x24
+  Changed text color to #FFFFFF and background color to #020B0E
+  Changed the following shortcuts:
+    Ctrl+T
+    Ctrl+V
+    Ctrl+F
+-> Unchecked "show unsafe paste dialog"
+sudo dnf install xfce4-systemload-plugin
+-> Customised top panel and dock
+# https://docs.fedoraproject.org/en-US/quick-docs/assembly_installing-plugins-for-playing-movies-and-music/
+sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+sudo dnf install lame\* --exclude=lame-devel
+sudo dnf group upgrade --with-optional Multimedia
+-> Unchecked dnfdragora-updater in startup
+-> Under Keyboard, did the following shorctuts:
+  Super+T
+  Super+B
+  Super+K
+-> Under Window manager, did the following shortcuts:
+  Super + D
+  Super + Q
+  Alt + +
+  Alt + -
+  Super + right
+  Shift + Super + right
+  Super + left
+  Shift + Super + left
+-> Changed the following keybinds under "Window manager -> Focus"
+-> In florence, did the following changes:
+  Changed style -> shape to "flat"
+  In layout, unchecked everything except "Function Keys"
+  In Window, Turned on everything except "Task bar", "keep on top" and "floating icon", and changed opactiy to 50
+-> Added florence to startup by adding `florence -d` to startup
+pip3 install rich thefuck
+-> Added the following config files:
+  ~/.bashrc
+  ~/.config/blesh/init.sh
+  ~./config/conky/conky.conf
+  ~/.config/neofetch/config.conf
+  ~/.config/nvim/init.vim
+# Fusuma
+sudo dnf install libinput xdotool ruby
+sudo gem install fusuma
+sudo gpasswd -a $USER input
+newgrp input
+-> Added `fusuma -d` to start on login
+-> Changed mouse acceleration to 6
+# Blesh
+git clone --recursive https://github.com/akinomyoga/ble.sh.git
+make -C ble.sh install PREFIX=~/.local
+echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
+-> Changed Wallpaper
+-> On desktop, changed icon size to 40 and changed the orientation to "Top Right Vertical"
+-> Added candy icons and applied them
+-> Changed the Window manager theme to "Sweet-Dark-v40"
+-> Changed system wide font to Ubuntu Regular (10) and monospace to Lucida Console Regular (12)
+-> Changed WM title font to Ubuntu Thin (12)
+# Brave
+sudo dnf install dnf-plugins-core
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf install brave-browser
+-> Changed default browser to Brave
+# Conky
+sudo dnf install conky conky-manager
+-> Added `conky -d` to run at login
+pip3 install spotifetch
+# Polybar
+sudo dnf install polybar
+sudo dnf install rofi calc networkmanager_dmenu
+pip3 install pywal
+sudo wget https://github.com/firecat53/networkmanager-dmenu/blob/main/networkmanager_dmenu?raw=True -O /usr/local/bin/networkmanager_dmenu
+sudo chmod +X networkmanager_dmenu
+# Macht
+git clone https://github.com/rolfmorel/macht
+cd macht
+sudo python setup.py install
+
+
+
+'''
+macht
+spotify, vs code, minecraft, OBS
+polybar
+synapse
+screesnhot
+in futuma, brave keybinds
+keyboard light
+'''
+
+
+# lspci | grep -i broadcom
+# BCM4360
+# https://www.reddit.com/r/Fedora/comments/emb0de/having_some_difficulty_getting_broadcom_bcm4360/
+
