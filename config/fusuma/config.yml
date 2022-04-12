@@ -8,6 +8,6 @@ swipe:
       command: "xmessage test" # Activity
 
 threshold:
-  swipe: 0.5
+  swipe: 0.25
 interval:
   swipe: 0.5
