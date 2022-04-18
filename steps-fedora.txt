@@ -11,9 +11,9 @@ sudo dnf install @xfce-desktop-environment
 -> Turned on "tap touchpad to click"
 -> Changed general theme to "Adwita-dark"
 -> Changed gEdit theme to Oblivion
-sudo dnf install python3 python3-pip neofetch cpufetch tmux htop lolcat openssh-server nyancat tor bat lsd florence neovim xmessage timeshift flameshot
--> In Ternimal, did the following changes:
-  Changed terminal cursor to blinking I beam
+sudo dnf install python3 python3-pip neofetch cpufetch tmux htop lolcat openssh-server nyancat tor bat lsd florence neovim xmessage timeshift flameshot obs-studio plank plank-docklets alacritty kitty
+-> In Terminal, did the following changes:
+  Changed terminal cursor to blinking | beam
   Changed default geometry to 75x24
   Changed text color to #FFFFFF and background color to #020B0E
   Changed the following shortcuts:
@@ -32,6 +32,8 @@ sudo dnf group upgrade --with-optional Multimedia
   Super+T
   Super+B
   Super+K
+  Super+Shift+4
+  Super+SHift+5
 -> Under Window manager, did the following shortcuts:
   Super + D
   Super + Q
@@ -91,16 +93,25 @@ sudo chmod +X networkmanager_dmenu
 git clone https://github.com/rolfmorel/macht
 cd macht
 sudo python setup.py install
+-> Turned off "show shadows under dock windows" in Window Manger Tweaks -> Compositor
+-> Added `plank` to run at login
+# Librewolf
+sudo rpm --import https://keys.openpgp.org/vks/v1/by-fingerprint/034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3
+sudo dnf config-manager --add-repo https://rpm.librewolf.net
+sudo dnf update
+sudo dnf install librewolf
+
 
 
 
 '''
-macht
-spotify, vs code, minecraft, OBS
+spotify, minecraft
 polybar
 synapse
-screesnhot
-in futuma, brave keybinds
+macOS mission control thingy
+Alacritty
+Rofi
+Webcam
 keyboard light
 '''
 
