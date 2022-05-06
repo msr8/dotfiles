@@ -1,7 +1,11 @@
-alias cls='clear'
 alias py='python3'
-alias vim='nvim'
 alias ls='lsd --icon never'
+alias vim='nvim'
+alias cls='clear'
+alias bro='sudo'
+alias daddy='sudo'
+alias bitch='sudo'
+alias please='sudo'
 alias locip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
 
