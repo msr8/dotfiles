@@ -2,6 +2,7 @@ alias py='python3'
 alias ls='lsd --icon never'
 alias vim='nvim'
 alias cls='clear'
+
 alias bro='sudo'
 alias daddy='sudo'
 alias bitch='sudo'
