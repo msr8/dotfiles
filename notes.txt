@@ -1,0 +1,10 @@
+svgexport filename.svg filename.png 1024:1024
+
+
+find ./ -type d -exec chmod 755 {} \;; find ./ -type f -exec chmod 644 {} \;
+
+
+py setup.py sdist bdist_wheel
+twine upload dist/*
+https://truveris.github.io/articles/configuring-pypirc/
+

@@ -11,7 +11,7 @@ For more details about these settings: please visit https://github.com/aClueless
 
 const options = {
   /* Widget size! */
-  size: "small",                  // -> big (default) | medium | small | mini
+  size: "mini",                  // -> big (default) | medium | small | mini
 
   /* Widget position! */
   verticalPosition: "bottom",      // -> top (default) | center | bottom | "<number>" | "-<number>"
@@ -25,7 +25,7 @@ const options = {
   minContrast: 2.6,             // -> 2.6 (default) | number
 
   /* Visual customization! */
-  dualProgressBar: false,       // -> true | false (default)
+  dualProgressBar: true,       // -> true | false (default)
   miniArtwork: true,           // -> true | false (default)
 
   /* Cache setting! */
@@ -45,7 +45,7 @@ export const className = `
   bottom: 0;
   right: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  color: white;
+  color: rgb(200,200,200);             // MODIFIED
 
   * {
     box-sizing: border-box;
@@ -167,7 +167,7 @@ const MiniPlayer = styled("div")`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 250px;                     // MODIFIED
   line-height: 1;
 
   * {
@@ -204,9 +204,9 @@ const ArtworkWrapper = styled("div")`
   }
 
   &.mini {
-    width: 65px;
-    height: 65px;
-    border-radius: 4px;
+    width: 52px;              // MODIFIED
+    height: 52px;             // MODIFIED
+    border-radius: 0px;      // MODIFIED
     margin-right: 10px;
     overflow: hidden;
   }
@@ -225,7 +225,7 @@ const ArtworkWrapper = styled("div")`
   }
 
   &.mini::before {
-    border-radius: 0;
+    border-radius: 52px;             // MODIFIED, this one doesn't matter after u make it equal to width/height
   }
 `
 
@@ -286,7 +286,7 @@ const Progress = styled("div")`
     left: 0;
     bottom: 0;
     width: ${props => props.percent}%;
-    background: ${props => props.progressColor ? props.progressColor : "white"};
+    background: ${props => props.progressColor ? props.progressColor : "rgb(100,100,100)"};       // MODIFIED, maybe do #32a852
     transition: width .6s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
@@ -297,12 +297,12 @@ const Progress = styled("div")`
 
   &.mini {
     position: relative;
-    height: 4px;
+    height: 2px;                 // MODIFIED
     border-radius: 2px;
-    background: ${props => options.dualProgressBar && props.emptyColor ? (props.emptyColor + "60") : "#0005"};
+    background: ${props => options.dualProgressBar && props.emptyColor ? (props.emptyColor + "60") : "rgb(50,50,50)"};   // MODIFIED
     box-shadow: 0 3px 5px -1px #0003;
     overflow: hidden;
-    margin-top: 10px;
+    margin-top: 0px;             // MODIFIED
   }
 `
 
@@ -322,7 +322,7 @@ const Track = styled("p")`
   }
 
   &.mini {
-    font-size: 1.2em;
+    font-size: 0.96em;         // MODIFIED
   }
 `
 
@@ -341,7 +341,7 @@ const Artist = styled("p")`
   }
 
   &.mini {
-    font-size: 1em;
+    font-size: 0.8em;         // MODIFIED
   }
 `
 

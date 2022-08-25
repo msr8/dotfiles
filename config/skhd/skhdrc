@@ -1,0 +1,30 @@
+# To Toggle float and bsp
+# shift + cmd - return : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+shift + cmd - return : yabai -m config layout $(if [[ $(yabai -m config layout) == 'bsp' ]]; then echo "float"; else echo "bsp"; fi) 
+# To toggle split type
+cmd - o              : yabai -m window --toggle split
+# To make a window float
+cmd - return         : yabai -m window --toggle float; \
+                       yabai -m window --grid 4:4:1:1:2:2
+# Focusing windows
+alt + cmd - up     : yabai -m window --focus north
+alt + cmd - down   : yabai -m window --focus south
+alt + cmd - left   : yabai -m window --focus west
+alt + cmd - right  : yabai -m window --focus east
+
+# Swapping windows
+shift + cmd - up     : yabai -m window --swap north
+shift + cmd - down   : yabai -m window --swap south
+shift + cmd - left   : yabai -m window --swap west
+shift + cmd - right  : yabai -m window --swap east
+
+# Opening applications
+cmd + ctrl - s : open -n "/System/Applications/System Preferences.app"
+cmd + ctrl - t : open -n "/Applications/kitty.app"
+cmd + ctrl - f : open ~
+
+# Cause my f2 key is breaking
+# cmd - ' : brightness 1
+
+# shift + cmd - return : yabai -m config layout bsp
+

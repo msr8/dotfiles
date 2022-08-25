@@ -1,0 +1,3 @@
+# https://github.com/rdegges/ipify-api
+curl -s https://api.ipify.org/?format=json \
+| jq -r '.ip'

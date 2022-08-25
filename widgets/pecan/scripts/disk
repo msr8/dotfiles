@@ -1,0 +1,22 @@
+# Gets the total space and free space
+values="$(df -H | awk '/\/dev\/disk1/ {printf("%s\n%s\n", $2,$4)}' | sed -n 1,2p)"
+
+# Extracts total space and free space
+total="$(echo "$values" | sed -n 1p)"
+free="$(echo "$values"  | sed -n 2p)"
+
+# Cuts off the last letter, so 121G becomes 121
+total=${total:0:-1}
+free=${free:0:-1}
+
+# Gets the used space and converts it to precentage
+# used=$(( total-free ))
+# used_per=$(( (used*100) / total ))
+
+# Converts free space into percentage
+free_per=$(( (free*100) / total ))
+
+# Prints it
+echo "$free_per%" # Added the % here cz for some reason, it looks better than adding it in disk.jsx
+
+

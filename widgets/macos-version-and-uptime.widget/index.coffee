@@ -30,19 +30,19 @@ showBuild = false
 #-----------------------------------------------------------------------
 
 # Position the widget on the screen
-pos1  = 'left: 0.5rem'
-pos2  = 'top:  0.8rem'
+pos1  = 'right:  0.5rem'
+pos2  = 'bottom: 0.8rem'
 #-----------------------------------------------------------------------
 
 # --- Create the themes ------------------------------------------------
 if theme == 'mono' or theme == 'dark'
-  labelColor   = '#fff'    # white
-  nameColor    = '#fff'    # white
-  osColor      = '#fff'    # white
-  lineColor    = '#fff'    # white
-  uptimeColor  = '#ddd'    # light gray
-  bkGround     = 'rgba(0, 0, 0, 0.5)'
-  opacityLevel = '0.6'
+  labelColor   = 'rgb(200,200,200)'       # MODIFIED
+  nameColor    = 'rgb(200,200,200)'       # MODIFIED
+  osColor      = 'rgb(200,200,200)'       # MODIFIED
+  lineColor    = 'rgba(0, 0, 0, 0)'       # MODIFIED
+  uptimeColor  = '#ddd'
+  bkGround     = 'rgba(0, 0, 0, 0)'       # MODIFIED
+  opacityLevel = '1'
 
 else if theme == 'paper'
   labelColor   = '#fff'    # white
@@ -219,3 +219,4 @@ style: """
 	max-width: 100%
 
 """
+

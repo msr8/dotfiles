@@ -1,0 +1,37 @@
+# Gets the battery
+battery="$(pmset -g batt | grep -o '[0-9]*%' | tr -d '%')"
+
+
+# Gets the icon based on percentage
+if   [[ $battery   -gt 90 ]]; then
+    icon=" ​"
+elif   [[ $battery -gt 65 ]]; then
+    icon=" ​"
+elif [[ $battery   -gt 40 ]]; then
+    icon=" ​"
+elif [[ $battery   -gt 15 ]]; then
+    icon=" ​"
+else
+    icon=" ​"
+fi
+
+
+# Checks if the device is charging
+if pmset -g batt | grep AC &> /dev/null; then
+    # Because visually, this emoji takes less space than the nerd one
+    icon="⚡"; space="​ ​"
+else
+    space=""
+fi
+
+
+# Gets the space required (so that the widget is always of the same length)
+if [[ $battery == 100 ]]; then
+    space+=""
+else
+    space+="​ ​"
+fi
+
+# Prints it out
+echo "$icon $battery%$space"
+

@@ -1,0 +1,6 @@
+wifiname="$(networksetup -getairportnetwork en0 | sed -n 1p | cut -c 24-)"
+if [[ $wifiname != "with an AirPort network." ]]; then
+    echo "直 ​ ​$wifiname"
+else
+    echo "睊 ​ ​Disconnected :("
+fi
