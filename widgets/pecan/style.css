@@ -137,7 +137,7 @@
 }
 
 
-.pecantext {
+.uptime {
   font: var(--font-size, 12px) var(--font, MesloLGS Nerd Font, Ubuntu Mono, Menlo);
   background-color: var(--background-network, var(--color3, #222));
   opacity: var(--opacity-inner, 1);
