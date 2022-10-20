@@ -1,10 +1,22 @@
 svgexport filename.svg filename.png 1024:1024
 
-
 find ./ -type d -exec chmod 755 {} \;; find ./ -type f -exec chmod 644 {} \;
-
 
 py setup.py sdist bdist_wheel
 twine upload dist/*
 https://truveris.github.io/articles/configuring-pypirc/
+
+spicetify upgrade
+spicetify backup apply
+
+sudo journalctl -u catapi
+
+rsync -av --delete ~/Pictures/eyebleach/ mark@apiofcats.xyz:/home/mark/pictures/eyebleach/
+
+https://stackoverflow.com/a/34732690/17002774
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+https://github.com/settings/tokens
+
+
+
 
