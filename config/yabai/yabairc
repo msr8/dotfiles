@@ -16,13 +16,13 @@ yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^iCanHazShortcut$"    manage=off
 yabai -m rule --add app="^Finder$"             manage=off
 yabai -m rule --add app="^Stats$"              manage=off
+yabai -m rule --add app="^VLC$"                border=off
+yabai -m config window_border_blur off
 
 # ---------- Borders ----------
-yabai -m config window_border              on
-yabai -m config window_border_width        1 
-# yabai -m config active_window_border_color 0xFF5d465e
-yabai -m config active_window_border_color 0xFF916c93
-# yabai -m config active_window_border_color 0xFF991165
+yabai -m config window_border               on
+yabai -m config window_border_width         1 
+yabai -m config active_window_border_color  0xFF916c93
 
 
 

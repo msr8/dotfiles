@@ -19,9 +19,9 @@ shift + cmd - left   : yabai -m window --swap west
 shift + cmd - right  : yabai -m window --swap east
 
 # Opening applications
-cmd + ctrl - s : open -n "/System/Applications/System Preferences.app"
-cmd + ctrl - t : open -n "/Applications/kitty.app"
-cmd + ctrl - f : open ~
+cmd + alt - s : open -n "/System/Applications/System Preferences.app"
+cmd + alt - t : open -n "/Applications/kitty.app"
+cmd + alt - f : open ~
 
 # Cause my f2 key is breaking
 # cmd - ' : brightness 1
