@@ -26,7 +26,8 @@ args   = parser.parse_args()
 usr  = os.popen('whoami').read().strip()
 text = TEMPLATE.format(**args.__dict__)
 
-with open(f'/home/{usr}/.config/autostart/{args.name}.desktop') as f:
+os.makedirs(f'/home/{usr}/.config/autostart', exist_ok=True)
+with open(f'/home/{usr}/.config/autostart/{args.name}.desktop', 'w') as f:
     f.write(text)
 
 
