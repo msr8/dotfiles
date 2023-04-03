@@ -23,12 +23,12 @@ parser.add_argument('comment')
 parser.add_argument('command')
 args   = parser.parse_args()
 
-usr  = os.popen('whoami')
+usr  = os.popen('whoami').read().strip()
 text = TEMPLATE.format(**args.__dict__)
 
 with open(f'/home/{usr}/.config/autostart/{args.name}.desktop') as f:
     f.write(text)
 
 
-
+# print(usr)
 
