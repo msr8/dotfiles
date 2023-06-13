@@ -1,0 +1,14 @@
+super + f
+    command_you_want_to_run
+
+super+up
+    skippy-xd --activate-window-picker
+super+down
+    skippy-xd --deactivate-window-picker
+
+super+alt+b
+    firefox
+super+alt+t
+    kitty
+super+alt+f
+    thunar

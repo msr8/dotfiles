@@ -14,7 +14,7 @@ free=${free:0:-1}
 # used_per=$(( (used*100) / total ))
 
 # Converts free space into percentage
-free_per=$(( (free*100) / total ))
+free_per=$( echo $free*100/$total | bc )
 
 # Prints it
 echo "$free_per%" # Added the % here cz for some reason, it looks better than adding it in disk.jsx
