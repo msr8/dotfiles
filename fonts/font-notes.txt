@@ -1,0 +1,3 @@
+Body: Inter, Roboto, Comfortaa (only sometimes)
+Display: Hanken Grotesk, Comfortaa, Meslo, Raleway, Major Mono, Edu NSW ACT Foundation
+Code: Ubuntu Mono Nerd Font, Inconsolata

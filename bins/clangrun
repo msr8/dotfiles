@@ -12,7 +12,7 @@
 #
 # https://stackoverflow.com/a/41861500/17002774
 
-CMD="clang"
+CMD="g++"
 TEMPFILE="tempfile$$"
 for ARG in "$@"
 do
@@ -21,4 +21,5 @@ done
 CMD+=" -o ${TEMPFILE} && ./${TEMPFILE} && rm ${TEMPFILE}"
 
 eval $CMD
+
 
