@@ -1,0 +1,13 @@
+swipe:
+  3:
+    left:
+      command: "xdotool key alt+Right" # Right workspace
+    right:
+      command: "xdotool key alt+Left" # Left workspace
+    up:
+      command: "skippy-xd" # Skippy xd
+
+
+
+threshold:
+  swipe: 0.5

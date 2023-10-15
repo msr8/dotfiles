@@ -1,6 +1,6 @@
 # To Toggle float and bsp
 # shift + cmd - return : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
-shift + cmd - return : yabai -m config layout $(if [[ $(yabai -m config layout) == 'bsp' ]]; then echo "float"; else echo "bsp"; fi) 
+# shift + cmd - return : yabai -m config layout $(if [[ $(yabai -m config layout) == 'bsp' ]]; then echo "float"; else echo "bsp"; fi) 
 # To toggle split type
 cmd - o              : yabai -m window --toggle split
 # To make a window float
@@ -24,7 +24,6 @@ cmd + alt - t : open -n "/Applications/kitty.app"
 cmd + alt - f : open ~
 
 # Cause my f2 key is breaking
-# cmd - ' : brightness 1
+cmd - semicolon : brightness 1
 
 # shift + cmd - return : yabai -m config layout bsp
-

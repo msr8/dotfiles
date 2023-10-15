@@ -1,0 +1,8 @@
+f4
+    rofi -show drun -theme $HOME/.config/rofi/launchers/type-3/style-7.rasi
+super+r
+    rofi -show drun -theme $HOME/.config/rofi/launchers/type-4/style-10.rasi 
+super+t
+    kitty
+super+b
+    firefox
