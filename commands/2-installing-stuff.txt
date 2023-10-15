@@ -22,7 +22,7 @@ cp -r neofetch   ~/.config/
 cp -r nvim       ~/.config/
 cp -r plank      ~/.config/
 cp -r skippy-xd  ~/.config/
-# cp -r swhkdrc    /etc/swhkd/swhkdrc # Commented it out cause doing this step after installing swhkdrc
+# cp swhkdrc    /etc/swhkd/swhkdrc # Commented it out cause doing this step after installing swhkdrc
 
 
 # Autostart
@@ -93,8 +93,7 @@ git clone https://github.com/richardgv/skippy-xd.git
 cd skippy-xd
 make
 sudo make install
-cd ~/.config
-mkdir skippy-xd
+
 
 # Vscode
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc

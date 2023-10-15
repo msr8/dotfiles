@@ -4,17 +4,17 @@ import os
 
 TEMPLATE = '''\
 [Desktop Entry]
-Encoding=UTF-8
-Version=0.9.4
+# Encoding=UTF-8
+# Version=0.9.4
 Type=Application
 Name={name}
 Comment={comment}
-Exec={command}
+Exec=sh -c '{command}'
 # OnlyShowIn=XFCE;
-RunHook=0
-StartupNotify=false
-Terminal=false
-Hidden=false
+# RunHook=0
+# StartupNotify=false
+# Terminal=false
+# Hidden=false
 '''
 
 
