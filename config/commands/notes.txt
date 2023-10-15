@@ -1,0 +1,46 @@
+# rofi -show drun -theme $HOME/.config/rofi/launchers/type-3/style-4.rasi 
+# launchers/type-2/style-6 | type-1/style-4 | type-3/style-9
+# launchers/type-2/style-10
+# launchppppprers/type-2/style-11
+# type-1/style-9 | type-1/style-7
+# type-1/style-10 | type-4/style-10
+# type-3/style-7
+# type-4/style-5
+# ALL type 5 ones
+# type-7/style-6
+# themes: arc, catppuccin, gruvbox, dracula, lovelace, onedark
+
+# Manual Changes
+# -> Turned off "show shadows under dock windows" in Window Manger Tweaks -> Compositor
+# -> Deleted bottom panel and made top panel hide "always"
+# -> Set wallpaper
+# -> In Settings > Mouse and Touchpad, reversed scrolling, enabled "tap touchpad to click", and set mouse acceleration to 5.8
+# -> In Settings > Appearance, changed icon and themes
+# -> Right clicking the plank dock while holding ctrl and clicking "Preferences", changed "Hide Delay" to 400, "Theme" to transparent, and "Hide Dock" to "Autohide"
+# -> In Settings > Desktop > Icons, set  "Icon Type" to "None"
+
+# In settings, change these shortcuts:
+# Super+Right (Change Workspace)
+# Super+Left (Change Workspace)
+# Shift+Super+Right (Move window)
+# Shift+Super+Left (Move window)
+# Super+D (Show Desktop)
+# Super+Insert (Add Adjacent workspace)
+# Super+Delete (Delete current workspace)
+# Super+R (App Finder)
+# Super+? (Windows operations menu)
+
+
+
+
+
+
+
+# -> upload skippy-xd.rc
+# -> upload kitty conf
+# -> upload fusuma conf
+
+# -> make widgets
+# -> Finish wallpaper section
+# -> Add app viewetr using that tool
+
