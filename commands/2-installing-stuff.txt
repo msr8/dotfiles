@@ -4,7 +4,7 @@ sudo dnf install -y neofetch feh neovim kitty lsd bat zoxide python3 python3-pip
 sudo dnf install -y cargo ruby
 pip install rich sty tqdm requests scikit-learn jupyterlab jupyterlab-night jupyterlab-pygments jupyterlab-widgets jupyterlab_horizon_theme
 pip install thefuck trash-cli
-sudo gem update fusuma
+sudo gem install fusuma
 cargo install viu
 mkdir ~/repos
 cd ~/repos
@@ -17,11 +17,12 @@ cat bashrc >> ~/.bashrc
 cd config
 cp -r blesh      ~/.config/
 cp -r fusuma     ~/.config/
-cp -r kitty      ~/.config/
 cp -r neofetch   ~/.config/
 cp -r nvim       ~/.config/
 cp -r plank      ~/.config/
 cp -r skippy-xd  ~/.config/
+mkdir ~/.config/kitty
+cp kitty/linux-kitty.conf ~/.config/kitty.conf
 # cp swhkdrc    /etc/swhkd/swhkdrc # Commented it out cause doing this step after installing swhkdrc
 
 
@@ -52,7 +53,7 @@ git clone https://github.com/waycrate/swhkd
 cd swhkd
 make
 sudo make install
-sudo cp -r swhkdrc /etc/swhkd/swhkdrc
+sudo cp ~/repos/dotfiles/config/swhkdrc /etc/swhkd/swhkdrc
 
 
 # Scrolling issues

@@ -1,11 +1,15 @@
 swipe:
   3:
     left:
-      command: "xdotool key alt+Right" # Right workspace
+      command: "xdotool key super+Right" # Right workspace
     right:
-      command: "xdotool key alt+Left" # Left workspace
+      command: "xdotool key super+Left" # Left workspace
     up:
-      command: "skippy-xd" # Skippy xd
+      command: "skippy-xd --toggle-window-picker" # Skippy xd
+      threshold: 0.25
+    down:
+      command: "skippy-xd --toggle-window-picker" # Skippy xd
+      threshold: 0.25
 
 
 
