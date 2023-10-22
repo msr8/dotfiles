@@ -11,14 +11,15 @@
 # themes: arc, catppuccin, gruvbox, dracula, lovelace, onedark
 
 # Manual Changes
-# -> Turned off "show shadows under dock windows" in Window Manger Tweaks -> Compositor
+# -> Turned off compositor in Window Manager Tweaks > Compositor
 # -> Deleted bottom panel and made top panel hide "always"
 # -> Set wallpaper
-# -> In Settings > Mouse and Touchpad, reversed scrolling, enabled "tap touchpad to click", and set mouse acceleration to 5.8
+# -> In Settings > Mouse and Touchpad, reversed scrolling, enabled "tap touchpad to click", ~~and set mouse acceleration to 5.8~~
 # -> In Settings > Appearance, changed icon and themes
 # -> In Window Manager > Style, changed theme to "Sweet-Dark-v40"
 # -> Right clicking the plank dock while holding ctrl and clicking "Preferences", changed "Hide Delay" to 400, "Theme" to transparent, and "Hide Dock" to "Autohide"
 # -> In Settings > Desktop > Icons, set  "Icon Type" to "None"
+# In apperance, change font to Ubuntu Nerd Font Regular 12
 # In text editor, change theme to dark
 
 # In settings, change these shortcuts:
@@ -32,6 +33,8 @@
 # Super+F (Maximise window)
 # Super+= (Add workspace)
 # Super+- (Delete current workspace)
+# Super+D (Show Desktop)
+# Shift+Alt (Resize window)
 
 
 

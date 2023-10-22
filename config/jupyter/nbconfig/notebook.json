@@ -1,0 +1,9 @@
+{
+  "Notebook": {
+    "Toolbar": true,
+    "Header": false
+  },
+  "load_extensions": {
+    "jupyter_tabnine/main": true
+  }
+}

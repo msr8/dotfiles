@@ -1,0 +1,49 @@
+/* For styling the rendered Markdown */
+
+@import url('https://fonts.googleapis.com/css2?family=Tinos');
+
+:root {
+    --font: "Ubuntu Nerd Font";
+    --font-code: "Consolas";
+    --font-size: 16px;
+}
+
+
+/* html {
+    font-family: var(--font);
+}
+body {
+    font-family: var(--font);
+} */
+
+div.text_cell_render {
+    font-family: var(--font);
+    font-size:   var(--font-size);
+}
+
+
+
+
+td {font-family: var(--font);}
+
+td {background-color: rgba(0,0,0,0);}
+
+
+.big-heading {
+    font-size: 200%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.question {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+
+/* body{
+    font-family: "UbuntuMono Nerd Font" !important;
+} */
+
+
+

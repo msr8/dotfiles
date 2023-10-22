@@ -1,6 +1,7 @@
 # Necceseties
-sudo dnf install -y firefox
-sudo dnf install -y neofetch feh neovim kitty lsd bat zoxide python3 python3-pip lolcat cowsay cmatrix wmctrl sxhkd xfdashboard git feh plank plank-docklets xdotool rofi
+sudo dnf install -y firefox kitty feh gedit oneko
+sudo dnf install -y plank plank-docklets rofi xfdashboard polybar
+sudo dnf install -y neofetch neovim lsd bat zoxide python3 python3-pip lolcat cowsay cmatrix wmctrl sxhkdgit xdotool
 sudo dnf install -y cargo ruby
 pip install rich sty tqdm requests scikit-learn jupyterlab jupyterlab-night jupyterlab-pygments jupyterlab-widgets jupyterlab_horizon_theme
 pip install thefuck trash-cli
@@ -19,6 +20,7 @@ cp -r blesh      ~/.config/
 cp -r fusuma     ~/.config/
 cp -r neofetch   ~/.config/
 cp -r nvim       ~/.config/
+cp -r picom      ~/.config/
 cp -r plank      ~/.config/
 cp -r skippy-xd  ~/.config/
 mkdir ~/.config/kitty
@@ -28,11 +30,13 @@ cp kitty/linux-kitty.conf ~/.config/kitty.conf
 
 # Autostart
 cd ~/repos/dotfiles/bins
+python3 gen_autostart.py "fusuma"    "Starts the fusuma daemon"    "fusuma -d"
 python3 gen_autostart.py "imwheel"   "Starts the imwheel daemon"   "imwheel"
+python3 gen_autostart.py "oneko"     "Starts the oneko process"    "oneko -tofocus"
+python3 gen_autostart.py "picom"     "Starts the picom daemon"     "picom"
 python3 gen_autostart.py "plank"     "Starts the plank daemon"     "plank"
 python3 gen_autostart.py "skippy-xd" "Starts the skippy-xd daemon" "skippy-xd --start-daemon"
 python3 gen_autostart.py "swhkd"     "Starts the swhkd daemons"    "swhks & pkexec swhkd"
-python3 gen_autostart.py "fusuma"    "Starts the fusuma daemon"    "fusuma -d"
 
 # Ble.sh
 cd ~/repos
@@ -56,9 +60,9 @@ sudo make install
 sudo cp ~/repos/dotfiles/config/swhkdrc /etc/swhkd/swhkdrc
 
 
-# Scrolling issues
-sudo dnf install -y imwheel
-sudo dnf install -y xorg-x11-drv-evdev
+# # Scrolling issues
+# sudo dnf install -y imwheel
+# sudo dnf install -y xorg-x11-drv-evdev
 
 # Wallpaper
 cd ~/repos
@@ -94,6 +98,15 @@ git clone https://github.com/richardgv/skippy-xd.git
 cd skippy-xd
 make
 sudo make install
+
+# Picom
+sudo dnf install -y dbus-devel gcc git libconfig-devel libdrm-devel libev-devel libX11-devel libX11-xcb libXext-devel libxcb-devel libGL-devel libEGL-devel meson pcre2-devel pixman-devel uthash-devel xcb-util-image-devel xcb-util-renderutil-devel xorg-x11-proto-devel
+cd ~/repos
+git clone https://github.com/ibhagwan/picom
+cd picom
+meson setup --buildtype=release build
+ninja -C build
+ninja -C build install
 
 
 # Vscode

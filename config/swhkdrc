@@ -6,3 +6,5 @@ super+alt+t
     kitty
 super+alt+b
     firefox
+super+alt+s
+    xfce4-settings-manager
