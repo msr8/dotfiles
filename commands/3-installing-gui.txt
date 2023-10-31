@@ -15,8 +15,8 @@ python3 gen_autostart.py "skippy-xd" "Starts the skippy-xd daemon" "skippy-xd --
 python3 gen_autostart.py "swhkd"     "Starts the swhkd daemons"    "swhks & pkexec swhkd"
 
 # Eww
-sudo dnf install -y gtk3 pango gdk-pixbuf2 cairo glib2 libgcc glibc
-sudo dnf remove rust # Doing this cause I need nightly rust for this
+sudo dnf install -y gtk3 pango gdk-pixbuf2 cairo glib2 libgcc glibc rust-gdk-sys+default-devel
+sudo dnf remove -y rust # Doing this cause I need nightly rust for this
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cd ~/repos
 git clone https://github.com/elkowar/eww
@@ -104,3 +104,8 @@ sudo dnf install -y code
 
 
 
+
+
+
+
+echo "Everything ran succesfully :D"

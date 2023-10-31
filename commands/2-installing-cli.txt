@@ -1,5 +1,5 @@
 # Necceseties
-sudo dnf install -y neofetch neovim lsd bat zoxide python3 python3-pip lolcat cowsay cmatrix git lshw
+sudo dnf install -y neofetch neovim lsd bat zoxide python3 python3-pip lolcat cowsay cmatrix git lshw acpi
 sudo dnf install -y cargo ruby
 pip install rich sty tqdm requests scikit-learn jupyterlab jupyterlab-night jupyterlab-pygments jupyterlab-widgets jupyterlab_horizon_theme
 pip install thefuck trash-cli
@@ -10,8 +10,8 @@ git clone https://github.com/msr8/dotfiles
 # Config
 cd ~/repos/dotfiles
 cp -r fonts ~/.fonts
-cat bashrc >> ~/.bashrc
 cd config
+cat bashrc >> ~/.bashrc
 cp -r blesh      ~/.config/
 cp -r fusuma     ~/.config/
 cp -r neofetch   ~/.config/
@@ -23,7 +23,7 @@ cp -r jupyter    ~/.jupyter
 cp dwm-autostart.sh  ~/.config/
 sudo cp 30-touchpad.conf /usr/share/X11/xorg.conf.d/
 mkdir ~/.config/kitty
-cp kitty/linux-kitty.conf ~/.config/kitty.conf
+cp kitty/linux-kitty.conf ~/.config/kitty/kitty.conf
 # cp swhkdrc    /etc/swhkd/swhkdrc # Commented it out cause doing this step after installing swhkdrc
 
 
@@ -40,5 +40,8 @@ make -C ble.sh install PREFIX=~/.local
 
 
 
+
+
+echo "Everything ran succesfully :D"
 
 
