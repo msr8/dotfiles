@@ -1,32 +1,8 @@
 # Necceseties
-sudo dnf install -y firefox kitty feh gedit oneko
+sudo dnf install -y firefox kitty feh gedit oneko lshw-gui
 sudo dnf install -y plank plank-docklets rofi xfdashboard polybar
-sudo dnf install -y neofetch neovim lsd bat zoxide python3 python3-pip lolcat cowsay cmatrix wmctrl sxhkdgit xdotool
-sudo dnf install -y cargo ruby
-pip install rich sty tqdm requests scikit-learn jupyterlab jupyterlab-night jupyterlab-pygments jupyterlab-widgets jupyterlab_horizon_theme
-pip install thefuck trash-cli
+sudo dnf install -y xdotool wmctrl
 sudo gem install fusuma
-cargo install viu
-mkdir ~/repos
-cd ~/repos
-git clone https://github.com/msr8/dotfiles
-
-# Config
-cd ~/repos/dotfiles
-cp -r fonts ~/.fonts
-cat bashrc >> ~/.bashrc
-cd config
-cp -r blesh      ~/.config/
-cp -r fusuma     ~/.config/
-cp -r neofetch   ~/.config/
-cp -r nvim       ~/.config/
-cp -r picom      ~/.config/
-cp -r plank      ~/.config/
-cp -r skippy-xd  ~/.config/
-mkdir ~/.config/kitty
-cp kitty/linux-kitty.conf ~/.config/kitty.conf
-# cp swhkdrc    /etc/swhkd/swhkdrc # Commented it out cause doing this step after installing swhkdrc
-
 
 # Autostart
 cd ~/repos/dotfiles/bins
@@ -38,10 +14,18 @@ python3 gen_autostart.py "plank"     "Starts the plank daemon"     "plank"
 python3 gen_autostart.py "skippy-xd" "Starts the skippy-xd daemon" "skippy-xd --start-daemon"
 python3 gen_autostart.py "swhkd"     "Starts the swhkd daemons"    "swhks & pkexec swhkd"
 
-# Ble.sh
+# Eww
+sudo dnf install -y gtk3 pango gdk-pixbuf2 cairo glib2 libgcc glibc
+sudo dnf remove rust # Doing this cause I need nightly rust for this
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cd ~/repos
-git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
-make -C ble.sh install PREFIX=~/.local
+git clone https://github.com/elkowar/eww
+cd eww
+cargo build --release --no-default-features --features x11
+cd target/release
+chmod +x ./eww
+mv ./eww ~/.local/bin
+
 
 # Rofi
 cd ~/repos
@@ -59,10 +43,6 @@ make
 sudo make install
 sudo cp ~/repos/dotfiles/config/swhkdrc /etc/swhkd/swhkdrc
 
-
-# # Scrolling issues
-# sudo dnf install -y imwheel
-# sudo dnf install -y xorg-x11-drv-evdev
 
 # Wallpaper
 cd ~/repos
@@ -113,10 +93,6 @@ ninja -C build install
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 sudo dnf install -y code
-
-
-
-
 
 
 
