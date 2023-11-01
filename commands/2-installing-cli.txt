@@ -7,6 +7,11 @@ cargo install viu
 cd ~/repos
 git clone https://github.com/msr8/dotfiles
 
+# Binaries in dotfiles/bin
+cd ~/repos/dotfiles/bins
+cp clangrun ~/.local/bin/
+cp pdfstr   ~/.local/bin/
+
 # Config
 cd ~/repos/dotfiles
 cp -r fonts ~/.fonts
