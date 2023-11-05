@@ -4,15 +4,15 @@ sudo dnf install -y plank plank-docklets rofi xfdashboard polybar
 sudo dnf install -y xdotool wmctrl
 sudo gem install fusuma
 
-# Autostart
-cd ~/repos/dotfiles/bins
-python3 gen_autostart.py "fusuma"    "Starts the fusuma daemon"    "fusuma -d"
-python3 gen_autostart.py "imwheel"   "Starts the imwheel daemon"   "imwheel"
-python3 gen_autostart.py "oneko"     "Starts the oneko process"    "oneko -tofocus"
-python3 gen_autostart.py "picom"     "Starts the picom daemon"     "picom"
-python3 gen_autostart.py "plank"     "Starts the plank daemon"     "plank"
-python3 gen_autostart.py "skippy-xd" "Starts the skippy-xd daemon" "skippy-xd --start-daemon"
-python3 gen_autostart.py "swhkd"     "Starts the swhkd daemons"    "swhks & pkexec swhkd"
+# # Autostart
+# cd ~/repos/dotfiles/bins
+# python3 gen_autostart.py "fusuma"    "Starts the fusuma daemon"    "fusuma -d"
+# python3 gen_autostart.py "imwheel"   "Starts the imwheel daemon"   "imwheel"
+# python3 gen_autostart.py "oneko"     "Starts the oneko process"    "oneko -tofocus"
+# python3 gen_autostart.py "picom"     "Starts the picom daemon"     "picom"
+# python3 gen_autostart.py "plank"     "Starts the plank daemon"     "plank"
+# python3 gen_autostart.py "skippy-xd" "Starts the skippy-xd daemon" "skippy-xd --start-daemon"
+# python3 gen_autostart.py "swhkd"     "Starts the swhkd daemons"    "swhks & pkexec swhkd"
 
 # Eww
 sudo dnf install -y gtk3 pango gdk-pixbuf2 cairo glib2 libgcc glibc rust-gdk-sys+default-devel

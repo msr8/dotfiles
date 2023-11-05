@@ -25,7 +25,7 @@ cp -r picom      ~/.config/
 cp -r plank      ~/.config/
 cp -r skippy-xd  ~/.config/
 cp -r jupyter    ~/.jupyter
-cp dwm-autostart.sh  ~/.config/
+cp dwm-autostart.sh  ~/.config/; chmod +x ~/.config/dwm-autostart.sh
 sudo cp 30-touchpad.conf /usr/share/X11/xorg.conf.d/
 mkdir ~/.config/kitty
 cp kitty/linux-kitty.conf ~/.config/kitty/kitty.conf
