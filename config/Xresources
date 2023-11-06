@@ -1,0 +1,7 @@
+dwm.normfgcolor:     #ffffff
+dwm.normbgcolor:     #000000
+dwm.normbordercolor: #303030
+
+dwm.selfgcolor:     #303030
+dwm.selbgcolor:     #ffffff
+dwm.selbordercolor: #ffffff

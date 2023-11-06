@@ -1,6 +1,6 @@
 # Necceseties
-sudo dnf install -y firefox kitty feh gedit oneko lshw-gui
-sudo dnf install -y plank plank-docklets rofi xfdashboard polybar
+sudo dnf install -y firefox kitty feh gedit lshw-gui xev
+sudo dnf install -y plank plank-docklets rofi xfdashboard polybar oneko
 sudo dnf install -y xdotool wmctrl
 sudo gem install fusuma
 
@@ -16,7 +16,7 @@ sudo gem install fusuma
 
 # Eww
 sudo dnf install -y gtk3 pango gdk-pixbuf2 cairo glib2 libgcc glibc rust-gdk-sys+default-devel
-sudo dnf remove -y rust # Doing this cause I need nightly rust for this
+sudo dnf remove -y rust # Doing this cause I need nightly rust for eww
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cd ~/repos
 git clone https://github.com/elkowar/eww
