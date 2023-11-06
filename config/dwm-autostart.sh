@@ -1,6 +1,7 @@
 WALLPAPER="deer 3840x2160.png"
 
-feh --bg-fill ~/repos/wallpapers/$WALLPAPER &
+feh --bg-fill "$HOME/repos/wallpapers/$WALLPAPER" &
+picom &
 oneko -tofocus &
 swhks & pkexec swhkd &
 

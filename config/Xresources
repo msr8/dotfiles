@@ -1,7 +1,41 @@
-dwm.normfgcolor:     #ffffff
-dwm.normbgcolor:     #000000
-dwm.normbordercolor: #303030
+! Thanks to u/qwool1337 (https://redd.it/17k92cn/)  (https://rentry.org/8pbt6)
 
-dwm.selfgcolor:     #303030
-dwm.selbgcolor:     #ffffff
-dwm.selbordercolor: #ffffff
+dwm.normfgcolor          : #ffffff
+dwm.normbgcolor          : #000000
+dwm.normbordercolor      : #303030
+dwm.normfloatcolor       : #ffffff
+
+dwm.selfgcolor           : #303030
+dwm.selbgcolor           : #ffffff
+dwm.selbordercolor       : #ffffff
+dwm.selfloatcolor        : #ffffff
+
+dwm.titlenormfgcolor     : #bbbbbb
+dwm.titlenormbgcolor     : #000000
+dwm.titlenormbordercolor : #000000
+dwm.titlenormfloatcolor  : #ffffff
+
+dwm.titleselfgcolor      : #ffffff
+dwm.titleselbgcolor      : #000000
+dwm.titleselbordercolor[ : #ffffff
+dwm.titleselfloatcolor   : #000000
+
+dwm.tagsnormfgcolor      : #ffffff
+dwm.tagsnormbgcolor      : #000000
+dwm.tagsnormbordercolor  : #000000
+dwm.tagsnormfloatcolor   : #ffffff
+
+dwm.tagsselfgcolor       : #000000
+dwm.tagsselbgcolor       : #ffffff
+dwm.tagsselbordercolor   : #ffffff
+dwm.tagsselfloatcolor    : #ffffff
+
+dwm.hidnormfgcolor       : #ffffff
+dwm.hidselfgcolor        : #ffffff
+dwm.hidnormbgcolor       : #000000
+dwm.hidselbgcolor        : #000000
+
+dwm.urgfgcolor           : #303030
+dwm.urgbgcolor           : #000000
+dwm.urgbordercolor       : #ffffff
+dwm.urgfloatcolor        : #ffffff

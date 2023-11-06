@@ -29,10 +29,12 @@ sudo hostnamectl set-hostname hp14
 sudo dnf install -y @xfce-desktop-environment
 
 # DWM
-sudo dnf -y install git
+sudo dnf -y install git xsetroot
 mkdir ~/repos
 cd ~/repos
 git clone https://github.com/msr8/my-dwm.git
+cd my-dwm
+sudo make clean install
 
 
 
