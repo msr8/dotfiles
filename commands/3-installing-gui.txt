@@ -4,6 +4,20 @@ sudo dnf install -y plank plank-docklets rofi xfdashboard polybar oneko
 sudo dnf install -y xdotool wmctrl
 sudo gem install fusuma
 
+# Config
+cd ~/repos/dotfiles
+cp -r fonts ~/.fonts
+cd config
+cp -r fusuma     ~/.config/
+cp -r picom      ~/.config/
+cp -r plank      ~/.config/
+cp -r skippy-xd  ~/.config/
+cp -r jupyter    ~/.jupyter
+cp dwm-autostart.sh  ~/.config/; chmod +x ~/.config/dwm-autostart.sh
+sudo cp 30-touchpad.conf /usr/share/X11/xorg.conf.d/
+mkdir ~/.config/kitty
+cp kitty/linux-kitty.conf ~/.config/kitty/kitty.conf
+
 # # Autostart
 # cd ~/repos/dotfiles/bins
 # python3 gen_autostart.py "fusuma"    "Starts the fusuma daemon"    "fusuma -d"
