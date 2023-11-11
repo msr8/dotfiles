@@ -30,7 +30,7 @@ sudo hostnamectl set-hostname hp14
 sudo dnf install -y @xfce-desktop-environment
 
 # DWM
-sudo dnf -y install git xsetroot make gcc libX11-devel libXft-devel libXinerama-devel
+sudo dnf -y install git xsetroot make gcc libX11-devel libXft-devel libXinerama-devel imlib2 imlib2-devel #imlib2 and imlib2-devel for the winicon patch
 mkdir ~/repos
 cd ~/repos
 git clone https://github.com/msr8/my-dwm.git

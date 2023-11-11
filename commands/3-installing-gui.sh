@@ -1,7 +1,7 @@
 # Necceseties
-sudo dnf install -y firefox kitty feh gedit lshw-gui xev
+sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr
 sudo dnf install -y plank plank-docklets rofi xfdashboard polybar oneko
-sudo dnf install -y xdotool wmctrl
+sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot
 sudo gem install fusuma
 
 # Config
@@ -17,6 +17,16 @@ cp dwm-autostart.sh  ~/.config/; chmod +x ~/.config/dwm-autostart.sh
 sudo cp 30-touchpad.conf /usr/share/X11/xorg.conf.d/
 mkdir ~/.config/kitty
 cp kitty/linux-kitty.conf ~/.config/kitty/kitty.conf
+
+# Set theme and icon
+cd ~/repos/dotfiles/config/gtk-3.0
+if [ -d ~/.config/gtk-3.0 ]; then
+    cp settings.ini ~/.config/gtk-3.0
+else
+    mkdir ~/.config/gtk-3.0
+    cp settings.ini ~/.config/gtk-3.0
+fi
+
 
 # # Autostart
 # cd ~/repos/dotfiles/bins
@@ -61,8 +71,6 @@ sudo cp ~/repos/dotfiles/config/swhkdrc /etc/swhkd/swhkdrc
 # Wallpaper
 cd ~/repos
 git clone https://github.com/msr8/wallpapers
-cd wallpapers
-# feh --bg-fill "kitty minimal monotone 1920x1080.png" # Does not work!!!!
 
 # Icons
 cd ~
@@ -101,6 +109,15 @@ cd picom
 meson setup --buildtype=release build
 ninja -C build
 ninja -C build install
+
+
+
+# Simple screen recorder
+sudo dnf install -y install qt4 qt4-devel ffmpeg-devel alsa-lib-devel pulseaudio-libs-devel jack-audio-connection-kit-devel make gcc gcc-c++ mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libXfixes-devel
+cd ~/repos
+git clone https://github.com/MaartenBaert/ssr
+cd ssr
+./simple-build-and-install
 
 
 # Vscode
