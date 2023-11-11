@@ -2,7 +2,7 @@
 sudo dnf install -y neofetch neovim lsd bat zoxide python3 python3-pip lolcat cowsay cmatrix git lshw acpi ncdu
 sudo dnf install -y cargo ruby
 pip install rich sty tqdm requests scikit-learn jupyterlab jupyterlab-night jupyterlab-pygments jupyterlab-widgets jupyterlab_horizon_theme
-pip install thefuck trash-cli
+pip install trash-cli
 cargo install viu
 cd ~/repos
 git clone https://github.com/msr8/dotfiles
@@ -23,6 +23,16 @@ cp -r nvim       ~/.config/
 cd ~/repos
 git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
 make -C ble.sh install PREFIX=~/.local
+
+# Fuck (have to build it from source cause of the missing `imp` module in py3.12)
+cd ~/repos
+git clone https://github.com/nvbn/thefuck
+pip install -r requirements.txt
+sudo python setup.py develop # Doing sudo cause of permission issues when not doing it
+
+
+
+
 
 # # Scrolling issues
 # sudo dnf install -y imwheel
