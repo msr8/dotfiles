@@ -115,6 +115,21 @@ ninja -C build install
 sudo dnf install -y lightdm lightdm-gtk
 sudo systemctl enable lightdm.service
 
+# Polybar (https://github.com/polybar/polybar/wiki/Compiling)
+sudo dnf install -y gcc-c++ clang git cmake @development-tools python3-sphinx python3-packaging
+sudo dnf install -y cairo-devel libuv-devel xcb-util-devel libxcb-devel xcb-proto xcb-util-image-devel xcb-util-wm-devel
+sudo dnf install -y xcb-util-xrm-devel xcb-util-cursor-devel alsa-lib-devel pulseaudio-libs-devel i3-devel jsoncpp-devel libmpdclient-devel libcurl-devel libnl3-devel
+cd ~/repos
+git clone --recursive https://github.com/polybar/polybar
+cd polybar
+mkdir build
+cd build
+cmake ..
+make -j$(nproc)
+sudo make install
+
+
+
 # Simple screen recorder
 sudo dnf install -y install qt4 qt4-devel ffmpeg-devel alsa-lib-devel pulseaudio-libs-devel jack-audio-connection-kit-devel make gcc gcc-c++ mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libXfixes-devel
 cd ~/repos
