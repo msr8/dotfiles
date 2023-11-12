@@ -111,6 +111,9 @@ ninja -C build
 ninja -C build install
 
 
+# Lightdm
+sudo dnf install -y lightdm lightdm-gtk
+sudo systemctl enable lightdm.service
 
 # Simple screen recorder
 sudo dnf install -y install qt4 qt4-devel ffmpeg-devel alsa-lib-devel pulseaudio-libs-devel jack-audio-connection-kit-devel make gcc gcc-c++ mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libXfixes-devel
