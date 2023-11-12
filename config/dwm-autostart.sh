@@ -2,6 +2,7 @@ WALLPAPER="deer 3840x2160.png"
 
 feh --bg-fill "$HOME/repos/wallpapers/$WALLPAPER" &
 picom &
+dunst &
 oneko -tofocus &
 swhks & pkexec swhkd &
 

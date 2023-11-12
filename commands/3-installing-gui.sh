@@ -1,7 +1,7 @@
 # Necceseties
 sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr
 sudo dnf install -y plank plank-docklets rofi xfdashboard polybar oneko
-sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot
+sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst
 sudo gem install fusuma
 
 # Config
