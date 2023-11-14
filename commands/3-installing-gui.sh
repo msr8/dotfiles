@@ -5,9 +5,7 @@ sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst
 sudo gem install fusuma
 
 # Config
-cd ~/repos/dotfiles
-cp -r fonts ~/.fonts
-cd config
+cd ~/repos/dotfiles/config
 cp -r fusuma     ~/.config/
 cp -r picom      ~/.config/
 cp -r plank      ~/.config/
@@ -91,6 +89,9 @@ unzip materia-cyberpunk-neon.zip
 rm Sweet-Dark-v40.zip
 rm oomox-cyberpunk-neon.zip
 rm materia-cyberpunk-neon.zip
+
+# Fonts
+cp -r fonts ~/.fonts
 
 
 # Skippy-xd
