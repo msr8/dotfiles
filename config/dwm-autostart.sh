@@ -1,12 +1,14 @@
 WALLPAPER="deer 3840x2160.png"
 
+pulseaudio &
+dunst &
 feh --bg-fill "$HOME/repos/wallpapers/$WALLPAPER" &
 picom &
-dunst &
 oneko -tofocus &
 swhks & pkexec swhkd &
+# dockerd &
 
-# For some reason swkhd turns off the wifi, so fixing that
+# For some reason swkhd somtimes turns off the wifi, so fixing that
 sleep 1; nmcli radio wifi on &
 
 
