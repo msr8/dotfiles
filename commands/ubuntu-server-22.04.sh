@@ -1,3 +1,7 @@
+# Made for Ubuntu 22.04 (Jammy)
+# wget https://raw.githubusercontent.com/msr8/dotfiles/main/commands/ubuntu-server-22.04.sh -O ubuntu-server-22.04.sh
+# bash -e ubuntu-server-22.04.sh
+
 sudo apt-get -y update && sudo apt-get -y upgrade
 
 sudo apt-get install -y neofetch gdu neovim tmux
@@ -6,13 +10,13 @@ neofetch
 cd ~/.config/neofetch # This folder is created when neofetch is run for the first time
 wget https://raw.githubusercontent.com/msr8/dotfiles/main/config/neofetch/config.conf -O config.conf
 
-# Disable firewall (since it doesnt let us send requests to servers for some reason)
-sudo ufw disable
-sudo systemctl disable nftables.service
-sudo iptables -P INPUT ACCEPT
-sudo iptables -P OUTPUT ACCEPT
-sudo iptables -P FORWARD ACCEPT
-sudo iptables -F
+# # Disable firewall (since it doesnt let us send requests to servers for some reason)
+# sudo ufw disable
+# sudo systemctl disable nftables.service
+# sudo iptables -P INPUT ACCEPT
+# sudo iptables -P OUTPUT ACCEPT
+# sudo iptables -P FORWARD ACCEPT
+# sudo iptables -F
 
 # MongoDB (https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
 sudo apt-get install -y gnupg curl
