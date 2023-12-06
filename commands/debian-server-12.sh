@@ -1,6 +1,5 @@
-# Made for Ubuntu 22.04 (Jammy)
-# wget https://raw.githubusercontent.com/msr8/dotfiles/main/commands/ubuntu-server-22.04.sh -O ubuntu-server-22.04.sh
-# bash -e ubuntu-server-22.04.sh
+# Made for Debian 12 (bullseye)
+# wget https://raw.githubusercontent.com/msr8/dotfiles/main/commands/debian-server-12.sh -O debian-server-12.sh; bash -e debian-server-12.sh
 
 sudo apt-get -y update && sudo apt-get -y upgrade
 
@@ -18,16 +17,16 @@ wget https://raw.githubusercontent.com/msr8/dotfiles/main/config/neofetch/config
 # sudo iptables -P FORWARD ACCEPT
 # sudo iptables -F
 
-# MongoDB (https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
+# MongoDB (https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-debian/)
 sudo apt-get install -y gnupg curl
 curl -fsSL https://pgp.mongodb.com/server-7.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
-echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] http://repo.mongodb.org/apt/debian bullseye/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
 sudo apt-get update
-# # The libssl1.1 package isn available on debian 12, so gotta install it manually (https://www.reddit.com/r/mongodb/comments/14bpu38/mongodb_not_allowed_to_be_installed_on_debian_12/)
-# curl ftp.us.debian.org/debian/pool/main/o/openssl/libssl1.1_1.1.1w-0+deb11u1_amd64.deb -o libssl1.1_1.1.1w-0+deb11u1_amd64.deb
-# sudo dpkg -i libssl1.1_1.1.1w-0+deb11u1_amd64.deb
-# rm libssl1.1_1.1.1w-0+deb11u1_amd64.deb
-# # ---
+# The libssl1.1 package isn available on debian 12, so gotta install it manually (https://www.reddit.com/r/mongodb/comments/14bpu38/mongodb_not_allowed_to_be_installed_on_debian_12/)
+curl ftp.us.debian.org/debian/pool/main/o/openssl/libssl1.1_1.1.1w-0+deb11u1_amd64.deb -o libssl1.1_1.1.1w-0+deb11u1_amd64.deb
+sudo dpkg -i libssl1.1_1.1.1w-0+deb11u1_amd64.deb
+rm libssl1.1_1.1.1w-0+deb11u1_amd64.deb
+# ---
 sudo apt-get install -y mongodb-org
 sudo systemctl start mongod
 sudo systemctl status mongod
