@@ -1,13 +1,18 @@
 # Made for Debian 12 (bullseye)
-# wget https://raw.githubusercontent.com/msr8/dotfiles/main/commands/debian-server-12.sh -O debian-server-12.sh; bash -e debian-server-12.sh
+# wget https://raw.githubusercontent.com/msr8/dotfiles/main/commands/debian-server-12.sh -O debian-server-12.sh && bash -e debian-server-12.sh
 
 sudo apt-get -y update && sudo apt-get -y upgrade
 
-sudo apt-get install -y neofetch gdu neovim tmux
-neofetch
+sudo apt-get install -y neofetch gdu neovim tmux neovim git curl lsd bat zoxide
 
-cd ~/.config/neofetch # This folder is created when neofetch is run for the first time
-wget https://raw.githubusercontent.com/msr8/dotfiles/main/config/neofetch/config.conf -O config.conf
+cd ~
+wget https://raw.githubusercontent.com/msr8/dotfiles/main/config/bashrc-debian-server -O .bashrc
+cd ~/.config
+mkdir neofetch
+wget https://raw.githubusercontent.com/msr8/dotfiles/main/config/neofetch/config.conf -O neofetch/config.conf
+mkdir nvim
+wget https://raw.githubusercontent.com/msr8/dotfiles/main/config/nvim/init.vim -O nvim/init.vim
+neofetch
 
 # # Disable firewall (since it doesnt let us send requests to servers for some reason)
 # sudo ufw disable
@@ -29,7 +34,7 @@ rm libssl1.1_1.1.1w-0+deb11u1_amd64.deb
 # ---
 sudo apt-get install -y mongodb-org
 sudo systemctl start mongod
-sudo systemctl status mongod
+# sudo systemctl status mongod
 sudo systemctl enable mongod
 
 
@@ -43,10 +48,13 @@ sudo apt-get install -y python3 python3-pip
 
 # # To run on host
 # kitten ssh root@<ip>
-# mongodump --db spotify --out /spotify-mongodb-dump
-# scp -6 -r ./spotify-mongodb-dump/ root@[...ip...]:/root/spotify-mongodb-dump
+# mongodump --db spotify --out ~/spotify-mongodb-dump
+# scp -r ~/spotify-mongodb-dump/ root@<ip>:/root/spotify-mongodb-dump # add the -6 flag if using ipv6
+# scp -r ~/Documents/Even_Newer_Python_Stuff/SPOTIFY_RECCOMENDER root@<ip>:/root/spotify-scraper
 
 # # Once the above commands are ran
 # cd $HOME/spotify-mongodb-dump
 # mongorestore --db spotify spotify/
+# cd $HOME/spotify-scraper
+# python3 -m pip install -r requirements.txt --break-system-packages
 
