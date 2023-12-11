@@ -7,6 +7,9 @@ sudo apt-get install -y neofetch gdu neovim tmux neovim git curl lsd bat zoxide
 
 cd ~
 wget https://raw.githubusercontent.com/msr8/dotfiles/main/config/bashrc-debian-server -O .bashrc
+if [ ! -d ".config" ]; then
+    mkdir .config
+fi
 cd ~/.config
 mkdir neofetch
 wget https://raw.githubusercontent.com/msr8/dotfiles/main/config/neofetch/config.conf -O neofetch/config.conf
