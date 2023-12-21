@@ -1,6 +1,6 @@
 # Necceseties
 sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr # GUI applications
-sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst pulseaudio # Tools I would not need in CLI-only machine
+sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst pulseaudio pipewire # Tools I would not need in CLI-only machine
 sudo dnf install -y plank plank-docklets rofi xfdashboard polybar oneko # Ricing
 sudo gem install fusuma
 
@@ -16,7 +16,7 @@ sudo cp 30-touchpad.conf /usr/share/X11/xorg.conf.d/
 mkdir ~/.config/kitty
 cp kitty/linux-kitty.conf ~/.config/kitty/kitty.conf
 
-# Set theme and icon
+# Set theme and icons
 cd ~/repos/dotfiles/config/gtk-3.0
 if [ -d ~/.config/gtk-3.0 ]; then
     cp settings.ini ~/.config/gtk-3.0
@@ -36,17 +36,17 @@ fi
 # python3 gen_autostart.py "skippy-xd" "Starts the skippy-xd daemon" "skippy-xd --start-daemon"
 # python3 gen_autostart.py "swhkd"     "Starts the swhkd daemons"    "swhks & pkexec swhkd"
 
-# Eww
-sudo dnf remove -y rust # Doing this cause I need nightly rust for eww
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-sudo dnf install -y gtk3 pango gdk-pixbuf2 cairo glib2 libgcc glibc rust-gdk-sys+default-devel # Have it below rustup cause rustup deletes these packages if I install them before
-cd ~/repos
-git clone https://github.com/elkowar/eww
-cd eww
-cargo build --release --no-default-features --features x11
-cd target/release
-chmod +x ./eww
-mv ./eww ~/.local/bin
+# # Eww
+# sudo dnf remove -y rust # Doing this cause I need nightly rust for eww
+# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# sudo dnf install -y gtk3 pango gdk-pixbuf2 cairo glib2 libgcc glibc rust-gdk-sys+default-devel # Have it below rustup cause rustup deletes these packages if I install them before
+# cd ~/repos
+# git clone https://github.com/elkowar/eww
+# cd eww
+# cargo build --release --no-default-features --features x11
+# cd target/release
+# chmod +x ./eww
+# mv ./eww ~/.local/bin
 
 
 # Rofi
@@ -94,13 +94,13 @@ rm materia-cyberpunk-neon.zip
 cp -r fonts ~/.fonts
 
 
-# Skippy-xd
-cd ~/repos
-sudo dnf -y install cmake gcc-c++ gtk3-devel libwnck3-devel libXcomposite-devel libXdamage-devel libX11-devel libXrandr-devel libXinerama-devel startup-notification-devel libXft-devel giflib-devel make gcc
-git clone https://github.com/richardgv/skippy-xd.git
-cd skippy-xd
-make
-sudo make install
+# # Skippy-xd
+# cd ~/repos
+# sudo dnf -y install cmake gcc-c++ gtk3-devel libwnck3-devel libXcomposite-devel libXdamage-devel libX11-devel libXrandr-devel libXinerama-devel startup-notification-devel libXft-devel giflib-devel make gcc
+# git clone https://github.com/richardgv/skippy-xd.git
+# cd skippy-xd
+# make
+# sudo make install
 
 # Picom
 sudo dnf install -y dbus-devel gcc git libconfig-devel libdrm-devel libev-devel libX11-devel libX11-xcb libXext-devel libxcb-devel libGL-devel libEGL-devel meson pcre2-devel pcre-devel pixman-devel uthash-devel xcb-util-image-devel xcb-util-renderutil-devel xorg-x11-proto-devel
@@ -114,7 +114,7 @@ ninja -C build install
 
 # Lightdm
 sudo dnf install -y lightdm lightdm-gtk
-sudo systemctl enable lightdm.service
+# sudo systemctl enable lightdm.service
 
 # Polybar (https://github.com/polybar/polybar/wiki/Compiling)
 sudo dnf install -y gcc-c++ clang git cmake @development-tools python3-sphinx python3-packaging
@@ -149,8 +149,9 @@ sudo dnf install -y code
 wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
 
 
-
-
+# Draw.io aka Diagrams.net
+wget https://github.com/jgraph/drawio-desktop/releases/download/v22.1.11/drawio-x86_64-22.1.11.rpm -O drawio.rpm
+sudo dnf install -y drawio.rpm
 
 
 

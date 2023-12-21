@@ -37,6 +37,10 @@ git clone https://github.com/msr8/my-dwm.git
 cd my-dwm
 sudo make clean install
 
+# Hyprland
+sudo dnf -y install hyprland
+sudo dnf -y install hyprland-devel
+
 
 
 
