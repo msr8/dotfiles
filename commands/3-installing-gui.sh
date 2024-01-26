@@ -1,6 +1,6 @@
 # Necceseties
-sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr # GUI applications
-sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst pulseaudio pipewire # Tools I would not need in CLI-only machine
+sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr vlc qbittorrent cool-retro-term syncthing nyancat # GUI applications
+sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst pulseaudio pipewire # Tools I would not need in a CLI-only machine
 sudo dnf install -y plank plank-docklets rofi xfdashboard polybar oneko # Ricing
 sudo gem install fusuma
 
@@ -18,12 +18,10 @@ cp kitty/linux-kitty.conf ~/.config/kitty/kitty.conf
 
 # Set theme and icons
 cd ~/repos/dotfiles/config/gtk-3.0
-if [ -d ~/.config/gtk-3.0 ]; then
-    cp settings.ini ~/.config/gtk-3.0
-else
+if [ ! -d ~/.config/gtk-3.0 ]; then
     mkdir ~/.config/gtk-3.0
-    cp settings.ini ~/.config/gtk-3.0
 fi
+cp settings.ini ~/.config/gtk-3.0
 
 
 # # Autostart
@@ -113,7 +111,7 @@ ninja -C build install
 
 
 # Lightdm
-sudo dnf install -y lightdm lightdm-gtk
+# sudo dnf install -y lightdm lightdm-gtk
 # sudo systemctl enable lightdm.service
 
 # Polybar (https://github.com/polybar/polybar/wiki/Compiling)
@@ -150,15 +148,41 @@ wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_
 
 
 # Draw.io aka Diagrams.net
+cd ~
 wget https://github.com/jgraph/drawio-desktop/releases/download/v22.1.11/drawio-x86_64-22.1.11.rpm -O drawio.rpm
 sudo dnf install -y drawio.rpm
+rm drawio.rpm
 
 
+# # MongoDB (and Compass) (https://www.mongodb.com/docs/v2.4/tutorial/install-mongodb-on-linux/)
+# cd ~
+# curl -O http://downloads.mongodb.org/linux/mongodb-linux-x86_64-2.4.14.tgz
+# tar -zxvf mongodb-linux-x86_64-2.4.14.tgz
+# # ??
+# # Compass (https://www.mongodb.com/docs/compass/current/install/)
+# wget https://downloads.mongodb.com/compass/mongodb-compass-1.40.4.x86_64.rpm
+# sudo yum install mongodb-compass-1.40.4.x86_64.rpm
 
 
+# Spotify (https://docs.fedoraproject.org/en-US/quick-docs/installing-spotify/)
+sudo dnf install -y flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.spotify.Client
+# Spicetify
+curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
+sudo chmod a+wr /opt/spotify
+sudo chmod a+wr /opt/spotify/Apps -R
 
 
+# Arduino IDE (https://developer.fedoraproject.org/start/hw/arduino/about.html)
+sudo dnf install -y flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install cc.arduino.arduinoide
 
+
+# Activate Linux XD (https://github.com/MrGlockenspiel/activate-linux)
+dnf config-manager --add-repo https://download.opensuse.org/repositories/home:tschmitz:activate-linux/Fedora_Rawhide/home:tschmitz:activate-linux.repo
+dnf install -y activate-linux
 
 
 
