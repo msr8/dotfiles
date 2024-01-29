@@ -1,6 +1,6 @@
 # Necceseties
 sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr vlc qbittorrent cool-retro-term syncthing nyancat # GUI applications
-sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst pulseaudio pipewire # Tools I would not need in a CLI-only machine
+sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst aircrack-ng pulseaudio pipewire --skip-broken # Tools I would not need in a CLI-only machine | Gotta do --skip-broken cause of pulseaudio and pipewire
 sudo dnf install -y plank plank-docklets rofi xfdashboard polybar oneko # Ricing
 sudo gem install fusuma
 
@@ -11,7 +11,8 @@ cp -r picom      ~/.config/
 cp -r plank      ~/.config/
 cp -r skippy-xd  ~/.config/
 cp -r jupyter    ~/.jupyter
-cp dwm-autostart.sh  ~/.config/; chmod +x ~/.config/dwm-autostart.sh
+cp autostart-dwm.sh   ~/.config/; chmod +x ~/.config/autostart-dwm.sh
+cp autostart-xfce.sh  ~/.config/; chmod +x ~/.config/autostart-xfce.sh
 sudo cp 30-touchpad.conf /usr/share/X11/xorg.conf.d/
 mkdir ~/.config/kitty
 cp kitty/linux-kitty.conf ~/.config/kitty/kitty.conf
@@ -130,11 +131,12 @@ sudo make install
 
 
 # Simple screen recorder
-sudo dnf install -y install qt4 qt4-devel ffmpeg-devel alsa-lib-devel pulseaudio-libs-devel jack-audio-connection-kit-devel make gcc gcc-c++ mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libXfixes-devel
-cd ~/repos
-git clone https://github.com/MaartenBaert/ssr
-cd ssr
-./simple-build-and-install
+# sudo dnf install -y qt4 qt4-devel ffmpeg-devel alsa-lib-devel pulseaudio-libs-devel jack-audio-connection-kit-devel make gcc gcc-c++ mesa-libGL-devel mesa-libGLU-devel libX11-devel libXext-devel libXfixes-devel
+# cd ~/repos
+# git clone https://github.com/MaartenBaert/ssr
+# cd ssr
+# ./simple-build-and-install
+sudo dnf install -y simplescreenrecorder
 
 
 # Vscode
@@ -169,9 +171,9 @@ sudo dnf install -y flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub com.spotify.Client
 # Spicetify
-curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
+curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
 
 
 # Arduino IDE (https://developer.fedoraproject.org/start/hw/arduino/about.html)
@@ -181,8 +183,14 @@ flatpak install cc.arduino.arduinoide
 
 
 # Activate Linux XD (https://github.com/MrGlockenspiel/activate-linux)
-dnf config-manager --add-repo https://download.opensuse.org/repositories/home:tschmitz:activate-linux/Fedora_Rawhide/home:tschmitz:activate-linux.repo
-dnf install -y activate-linux
+# Gotta build it manually cause of expired GPG key
+# dnf config-manager --add-repo https://download.opensuse.org/repositories/home:tschmitz:activate-linux/Fedora_Rawhide/home:tschmitz:activate-linux.repo
+# dnf install -y activate-linux
+cd ~/repos
+git clone https://github.com/MrGlockenspiel/activate-linux
+cd activate-linux
+make
+cp activate-linux ~/.local/bin
 
 
 

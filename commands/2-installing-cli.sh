@@ -27,13 +27,14 @@ make -C ble.sh install PREFIX=~/.local
 # Fuck (have to build it from source cause of the missing `imp` module in py3.12)
 cd ~/repos
 git clone https://github.com/nvbn/thefuck
+cd thefuck
 pip install -r requirements.txt
 sudo python setup.py develop # Doing sudo cause of permission issues when not doing it
 
 # Docker (https://docs.docker.com/engine/install/fedora/)
-sudo dnf -y install dnf-plugins-core
-sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo dnf install -y dnf-plugins-core
+sudo dnf config-manager -y --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl start docker
 
 

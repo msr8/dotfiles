@@ -22,21 +22,21 @@
 # In apperance, change font to Ubuntu Nerd Font Regular 12
 # In text editor, change theme to dark
 
-# In settings, change these shortcuts:
+# In settings > window manager > keyboard, change these shortcuts:
 # Super+Right (Change Workspace)
 # Super+Left (Change Workspace)
 # Shift+Super+Right (Move window)
 # Shift+Super+Left (Move window)
-# Super+D (Show Desktop)
-# Super+R (App Finder)
 # Super+? (Windows operations menu)
-# Super+F (Maximise window)
 # Super+= (Add workspace)
-# Super+- (Delete current workspace)
+# Super+- (Delete active workspace)
 # Super+D (Show Desktop)
 # Shift+Alt (Resize window)
+# Super+F (Maximise window)
+# Super+M (Hide window)
+# Super+D (Show Desktop)
 
-
+# In settings > keyboard > aplication shortcuts, unbinded Super+R for "xfce4-appfinder-c"
 
 
 
