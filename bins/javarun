@@ -1,0 +1,34 @@
+filename=$1
+
+# Check if filename is empty
+if [ -z "$filename" ]; then
+    echo "Usage: javarun <filename>"
+    exit 1
+fi
+
+# Check if file exists
+if [ ! -f "$filename" ]; then
+    echo "File $filename not found!"
+    exit 1
+fi
+
+# Check if file is a java file
+if [[ "$filename" != *.java ]]; then
+    echo "File $filename is not a java file!"
+    exit 1
+fi
+
+# Compile java file. This should create Main.class
+javac "$filename"
+
+# Check if Main.class exists
+if [ ! -f "Main.class" ]; then
+    echo "File Main.class not found!"
+    exit 1
+fi
+
+# Run Main.class
+java Main
+
+# Delete Main.class
+rm Main.class

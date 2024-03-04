@@ -1,9 +1,9 @@
 # Necceseties
-sudo dnf install -y neofetch neovim lsd bat zoxide python3 python3-pip lolcat cowsay cmatrix git lshw acpi ncdu
+sudo dnf install -y neofetch neovim lsd bat zoxide python3 python3-pip lolcat cowsay cmatrix git lshw acpi ncdu authbind exif exiv2 android-tools # android-tools gives adb
 sudo dnf install -y cargo ruby
-pip install rich sty tqdm requests scikit-learn jupyterlab jupyterlab-night jupyterlab-pygments jupyterlab-widgets jupyterlab_horizon_theme
-pip install trash-cli
-cargo install viu
+pip install rich sty tqdm requests scikit-learn jupyterlab jupyterlab-night jupyterlab-pygments jupyterlab-widgets jupyterlab_horizon_theme catppuccin-jupyterlab flask flask_restful flask_session
+pip install trash-cli yt-dlp
+cargo install viu macchina
 cd ~/repos
 git clone https://github.com/msr8/dotfiles
 
@@ -37,6 +37,21 @@ sudo dnf config-manager -y --add-repo https://download.docker.com/linux/fedora/d
 sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl start docker
 
+# Exiftool
+cd ~/repos
+git clone https://github.com/exiftool/exiftool
+sudo dnf install -y perl
+cd exiftool
+perl Makefile.PL
+make
+make test
+make install
+cp exiftool ~/.local/bin
+cp -r lib ~/.local/bin
+
+# Scrcpy
+cd ~/repos
+git clone 
 
 
 

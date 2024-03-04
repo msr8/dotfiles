@@ -14,7 +14,7 @@
 # -> Turned off compositor in Window Manager Tweaks > Compositor
 # -> Deleted bottom panel and made top panel hide "always"
 # -> Set wallpaper
-# -> In Settings > Mouse and Touchpad, reversed scrolling, enabled "tap touchpad to click", ~~and set mouse acceleration to 5.8~~
+# -> In Settings > Mouse and Touchpad, reversed scrolling, enabled "tap touchpad to click", ~~and set mouse acceleration to 6~~
 # -> In Settings > Appearance, changed icon and themes
 # -> In Window Manager > Style, changed theme to "Sweet-Dark-v40"
 # -> Right clicking the plank dock while holding ctrl and clicking "Preferences", changed "Hide Delay" to 400, "Theme" to transparent, and "Hide Dock" to "Autohide"
@@ -28,7 +28,7 @@
 # Shift+Super+Right (Move window)
 # Shift+Super+Left (Move window)
 # Super+? (Windows operations menu)
-# Super+= (Add workspace)
+# Super+= (Add adjacent workspace)
 # Super+- (Delete active workspace)
 # Super+D (Show Desktop)
 # Shift+Alt (Resize window)
@@ -37,6 +37,15 @@
 # Super+D (Show Desktop)
 
 # In settings > keyboard > aplication shortcuts, unbinded Super+R for "xfce4-appfinder-c"
+
+
+
+
+
+
+# GNOME
+# using dconf-editor, set the shortcuts for "switch-to-workspace-X" and "move-to-workspace-X" in org.gnome.desktop.wm.keybindings
+
 
 
 

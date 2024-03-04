@@ -1,11 +1,15 @@
 # Necceseties
-sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr vlc qbittorrent cool-retro-term syncthing nyancat # GUI applications
-sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst aircrack-ng pulseaudio pipewire --skip-broken # Tools I would not need in a CLI-only machine | Gotta do --skip-broken cause of pulseaudio and pipewire
+sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr vlc mpv qbittorrent cool-retro-term syncthing nyancat gnome-tweaks dconf-editor flatpak seahorse # GUI applications
+sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst aircrack-ng pulseaudio pipewire texlive-scheme-full pandoc --skip-broken # Tools I would not need in a CLI-only machine | Gotta do --skip-broken cause of pulseaudio and pipewire
 sudo dnf install -y plank plank-docklets rofi xfdashboard polybar oneko # Ricing
 sudo gem install fusuma
+flatpak install flathub org.gnome.Extensions
+flatpak install com.tomjwatson.Emote
+
 
 # Config
 cd ~/repos/dotfiles/config
+cp -r dunst      ~/.config/
 cp -r fusuma     ~/.config/
 cp -r picom      ~/.config/
 cp -r plank      ~/.config/
@@ -69,25 +73,13 @@ sudo cp ~/repos/dotfiles/config/swhkdrc /etc/swhkd/swhkdrc
 cd ~/repos
 git clone https://github.com/msr8/wallpapers
 
-# Icons
-cd ~
-mkdir .icons
-cd .icons
-git clone https://github.com/EliverLara/candy-icons
+# Icons & Cursors
+cd ~/repos/dotfiles
+cp -r icons ~/.icons
 
 # Themes
-cd ~
-mkdir .themes
-cd .themes
-wget https://github.com/EliverLara/Sweet/releases/download/v3.0/Sweet-Dark-v40.zip
-wget https://github.com/Roboron3042/Cyberpunk-Neon/raw/master/gtk/oomox-cyberpunk-neon.zip
-wget https://github.com/Roboron3042/Cyberpunk-Neon/raw/master/gtk/materia-cyberpunk-neon.zip
-unzip Sweet-Dark-v40.zip
-unzip oomox-cyberpunk-neon.zip
-unzip materia-cyberpunk-neon.zip
-rm Sweet-Dark-v40.zip
-rm oomox-cyberpunk-neon.zip
-rm materia-cyberpunk-neon.zip
+cd ~/repos/dotfiles
+cp -r themes ~/.themes
 
 # Fonts
 cp -r fonts ~/.fonts
@@ -151,19 +143,22 @@ wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_
 
 # Draw.io aka Diagrams.net
 cd ~
-wget https://github.com/jgraph/drawio-desktop/releases/download/v22.1.11/drawio-x86_64-22.1.11.rpm -O drawio.rpm
+wget https://github.com/jgraph/drawio-desktop/releases/download/v23.0.2/drawio-x86_64-23.0.2.rpm -O drawio.rpm
 sudo dnf install -y drawio.rpm
 rm drawio.rpm
 
 
 # # MongoDB (and Compass) (https://www.mongodb.com/docs/v2.4/tutorial/install-mongodb-on-linux/)
+# https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/
+echo -e "[mongodb-org-7.0]\nname=MongoDB Repository\nbaseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/x86_64/\ngpgcheck=1\nenabled=1\ngpgkey=https://pgp.mongodb.com/server-7.0.asc" | sudo tee /etc/yum.repos.d/mongodb-org-7.0.repo
+sudo dnf install -y mongodb-org
+# https://www.mongodb.com/docs/compass/current/install/
+wget https://downloads.mongodb.com/compass/mongodb-compass-1.40.4.x86_64.rpm
+sudo dnf install -y mongodb-compass-1.40.4.x86_64.rpm
+rm mongodb-compass-1.40.4.x86_64.rpm
 # cd ~
 # curl -O http://downloads.mongodb.org/linux/mongodb-linux-x86_64-2.4.14.tgz
 # tar -zxvf mongodb-linux-x86_64-2.4.14.tgz
-# # ??
-# # Compass (https://www.mongodb.com/docs/compass/current/install/)
-# wget https://downloads.mongodb.com/compass/mongodb-compass-1.40.4.x86_64.rpm
-# sudo yum install mongodb-compass-1.40.4.x86_64.rpm
 
 
 # Spotify (https://docs.fedoraproject.org/en-US/quick-docs/installing-spotify/)
@@ -183,7 +178,7 @@ flatpak install cc.arduino.arduinoide
 
 
 # Activate Linux XD (https://github.com/MrGlockenspiel/activate-linux)
-# Gotta build it manually cause of expired GPG key
+# (Gotta build it manually cause of expired GPG key)
 # dnf config-manager --add-repo https://download.opensuse.org/repositories/home:tschmitz:activate-linux/Fedora_Rawhide/home:tschmitz:activate-linux.repo
 # dnf install -y activate-linux
 cd ~/repos
@@ -191,6 +186,8 @@ git clone https://github.com/MrGlockenspiel/activate-linux
 cd activate-linux
 make
 cp activate-linux ~/.local/bin
+
+
 
 
 
