@@ -12,11 +12,11 @@ if [ ! -f "$filename" ]; then
     exit 1
 fi
 
-# Check if file is a java file
-if [[ "$filename" != *.java ]]; then
-    echo "File $filename is not a java file!"
-    exit 1
-fi
+# # Check if file is a java file
+# if [[ "$filename" != *.java ]]; then
+#     echo "File $filename is not a java file!"
+#     exit 1
+# fi
 
 # Compile java file. This should create Main.class
 javac "$filename"
@@ -30,5 +30,8 @@ fi
 # Run Main.class
 java Main
 
-# Delete Main.class
-rm Main.class
+# Delete all classes
+rm -- *.class
+
+# Close the java process, mf takes up 800mb of ram
+pkill java

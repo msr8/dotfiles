@@ -1,3 +1,6 @@
+macchina
+
+
 # ---------- ALIASES ----------
 alias grep='grep --color=auto --ignore-case'
 alias nc='netcat'
@@ -8,6 +11,7 @@ alias cd='z'
 alias rm='trash-put'
 alias cat='bat --paging=never --style=plain'
 alias cr='clangrun'
+alias jr='javarun'
 alias vim='nvim'
 alias cls='clear'
 alias bro='sudo'
@@ -15,13 +19,13 @@ alias daddy='sudo'
 alias bitch='sudo'
 alias please='sudo'
 alias tree='ls --tree'
-alias locip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
-alias sshserv='ssh mark@139.59.52.224'
+alias locip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | tail -n 1"
 alias hideicons='defaults write com.apple.finder CreateDesktop false; killall Finder'
 alias showicons='defaults write com.apple.finder CreateDesktop true;  killall Finder'
 alias pypiupload="rm -r dist; py setup.py sdist bdist_wheel; twine upload dist/*"
 alias pdfcombine="gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf"
 alias pipupgrade="pip freeze | awk -F \"==\" '{ print $1 }' > temp.txt; pip install -r temp.txt --upgrade; rm temp.txt"
+alias hollywood="docker run --rm -it bcbcarl/hollywood"
 
 
 
@@ -58,3 +62,15 @@ eval "$(thefuck --alias)"
 # ---------- SPICETIFY ----------
 export SPICETIFY_INSTALL="/Users/mark/.spicetify"
 export PATH="$PATH:/Users/mark/.spicetify"
+# DOCKER
+export DOCKER_HOST=unix:///run/user/1000/docker.sock
+
+export PATH=$PATH:/home/mark/.spicetify
+
+
+
+
+
+
+
+

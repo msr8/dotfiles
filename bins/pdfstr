@@ -1,2 +1,2 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python
 import os; print('"' + '" "'.join(sorted(  [i for i in os.listdir() if (not i.startswith('.')) and i.endswith('.pdf') and ')' in i]  ,  key=lambda x: int(x[:x.index(')')])  )) + '"')

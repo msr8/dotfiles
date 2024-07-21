@@ -1,9 +1,10 @@
 # Necceseties
-sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr vlc mpv qbittorrent cool-retro-term syncthing nyancat gnome-tweaks dconf-editor flatpak seahorse # GUI applications
-sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst aircrack-ng pulseaudio pipewire texlive-scheme-full pandoc --skip-broken # Tools I would not need in a CLI-only machine | Gotta do --skip-broken cause of pulseaudio and pipewire
+sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr vlc mpv qbittorrent cool-retro-term syncthing nyancat gnome-tweaks dconf-editor flatpak seahorse krita torbrowser-launcher sqlitebrowser # GUI applications
+sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst aircrack-ng pulseaudio pipewire texlive-scheme-full pandoc httrack --skip-broken # Gotta do --skip-broken cause of pulseaudio and pipewire
 sudo dnf install -y plank plank-docklets rofi xfdashboard polybar oneko # Ricing
 sudo gem install fusuma
 flatpak install flathub org.gnome.Extensions
+flatpak install flathub io.missioncenter.MissionCenter
 flatpak install com.tomjwatson.Emote
 
 
@@ -51,6 +52,12 @@ cp settings.ini ~/.config/gtk-3.0
 # chmod +x ./eww
 # mv ./eww ~/.local/bin
 
+
+# Brave (https://brave.com/en-in/linux/#fedora-rockyrhel)
+sudo dnf install -y dnf-plugins-core
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf -y install brave-browser
 
 # Rofi
 cd ~/repos
@@ -137,9 +144,11 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 sudo dnf install -y code
 
 
-# Joplin
-wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
-
+# Joplin (https://discourse.joplinapp.org/t/unofficial-alternative-joplin-distributions/23703 & https://copr.fedorainfracloud.org/coprs/taw/joplin/)
+# wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
+sudo dnf install -y dnf-plugins-core
+sudo dnf copr enable -y taw/joplin
+sudo dnf install -y joplin
 
 # Draw.io aka Diagrams.net
 cd ~
@@ -166,8 +175,8 @@ sudo dnf install -y flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub com.spotify.Client
 # Spicetify
-sudo chmod a+wr /opt/spotify
-sudo chmod a+wr /opt/spotify/Apps -R
+sudo chmod a+wr /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify/
+sudo chmod a+wr /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify/Apps -R
 curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh
 
 
@@ -175,6 +184,13 @@ curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/inst
 sudo dnf install -y flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install cc.arduino.arduinoide
+
+
+# Cloudflatre warp (https://pkg.cloudflareclient.com/)
+curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
+sudo dnf update
+sudo dnf install -y cloudflare-warp
+
 
 
 # Activate Linux XD (https://github.com/MrGlockenspiel/activate-linux)
@@ -187,6 +203,9 @@ cd activate-linux
 make
 cp activate-linux ~/.local/bin
 
+# Steam
+sudo dnf install -y steam-devices
+flatpak install -y flathub com.valvesoftware.Steam
 
 
 

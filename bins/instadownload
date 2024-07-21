@@ -1,0 +1,45 @@
+#!/usr/bin/python
+from instagrapi import Client
+
+from argparse   import ArgumentParser
+from os         import remove as os_remove
+import subprocess as sp
+
+parser = ArgumentParser()
+parser.add_argument('url', help='URL of the post to download')
+args = parser.parse_args()
+url  = args.url
+
+
+cl       = Client()
+media_pk = cl.media_pk_from_url(url)
+media    = cl.media_info(media_pk)
+
+if media.media_type == 1:
+    cl.photo_download(media_pk)
+elif media.media_type == 2:
+    fp = cl.video_download(media_pk)
+    command = ['ffmpeg', '-i', fp, f'{media.code}.mp4']
+    sp.run(command, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
+    os_remove(fp)
+else:
+    print(f'Media type {media.media_type} not supported')
+
+
+
+
+'''
+(https://subzeroid.github.io/instagrapi/usage-guide/media.html)
+3317315443935551676
+
+Photo: 1
+Reel/IGTV/Video: 2
+Album: 8
+
+By using code, you can visit the post by going to https://www.instagram.com/p/{code}
+
+AttributeError: 'Media' object has no attribute 'split'
+The above error is sometimes given for some god known reason
+
+Gotta do the ffmpeg thingy because without that, whatsapp gives the "The video can't be played" error
+'''
