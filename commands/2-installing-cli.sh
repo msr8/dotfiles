@@ -1,7 +1,7 @@
 # Necceseties
 sudo dnf install -y neofetch neovim lsd bat zoxide python3 python3-pip java-17-openjdk-devel.x86_64 lolcat cowsay cmatrix git lshw acpi ncdu authbind exif exiv2 qpdf android-tools # android-tools gives adb
 sudo dnf install -y cargo ruby
-pip install rich sty tqdm requests scikit-learn jupyterlab jupyterlab-night jupyterlab-pygments jupyterlab-widgets jupyterlab_horizon_theme catppuccin-jupyterlab flask flask_restful flask_session
+pip install rich sty tqdm requests scikit-learn jupyterlab jupyterlab-night jupyterlab-pygments jupyterlab-widgets jupyterlab_horizon_theme catppuccin-jupyterlab flask flask_restful flask_session tensorflow keras minisom pyperclip
 pip install trash-cli yt-dlp
 cargo install viu macchina
 cd ~/repos
@@ -24,6 +24,11 @@ cd ~/repos
 git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
 make -C ble.sh install PREFIX=~/.local
 
+# Github CLI (https://github.com/cli/cli/blob/trunk/docs/install_linux.md#fedora-centos-red-hat-enterprise-linux-dnf4--dnf5)
+sudo dnf install dnf5-plugins
+sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
+sudo dnf install gh --repo gh-cli
+
 # Fuck (have to build it from source cause of the missing `imp` module in py3.12)
 cd ~/repos
 git clone https://github.com/nvbn/thefuck
@@ -32,13 +37,16 @@ pip install -r requirements.txt
 sudo python setup.py develop # Doing sudo cause of permission issues when not doing it
 
 # Docker (https://docs.docker.com/engine/install/fedora/)
-sudo dnf install -y dnf-plugins-core
-sudo dnf config-manager -y --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo systemctl start docker
-wget https://desktop.docker.com/linux/main/amd64/139021/docker-desktop-4.28.0-x86_64.rpm -O docker-desktop.rpm
-sudo dnf install -y docker-desktop.rpm
-rm docker-desktop.rpm
+sudo dnf -y install dnf-plugins-core
+sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# sudo dnf install -y dnf-plugins-core
+# sudo dnf config-manager -y --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+# sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# # sudo systemctl start docker
+# wget https://desktop.docker.com/linux/main/amd64/139021/docker-desktop-4.28.0-x86_64.rpm -O docker-desktop.rpm
+# sudo dnf install -y docker-desktop.rpm
+# rm docker-desktop.rpm
 # Remember to do `rm ~/.docker/config.json` if you get the pass init error when logging in
 
 # Exiftool

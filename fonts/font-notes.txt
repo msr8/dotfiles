@@ -1,13 +1,10 @@
-Body: Inter, Roboto, Comfortaa (only sometimes), Spectral, Google Sans Mono
+Body: Inter, Roboto, Comfortaa (only sometimes), Spectral, Google Sans Mono, DM Sans, Montserrat
+Documents: Spectral, Montserrat
 Display: Hanken Grotesk, Comfortaa, Meslo, Raleway, Major Mono, Edu NSW ACT Foundation, Montserrat
-<<<<<<< HEAD
-Code: Ubuntu Mono Nerd Font, Inconsolata
-=======
-Code: Ubuntu Mono Nerd Font, Inconsolata
+Code: Ubuntu Mono Nerd Font, Inconsolata, Google Sans Mono
 Gaming: Monocraft, Pixelify Sans
-Handwriting Style Display: Qwitcher Grypen, Caveat, Comfortaa
+Handwriting Style Display: Qwitcher Grypen, Caveat, Comfortaa, Herr Von Muellerhoff
+Other: Doto
 
 [CANVA FONTS]
 Handwriting Style Display: Virtual
-
->>>>>>> a26aedd (an update :))

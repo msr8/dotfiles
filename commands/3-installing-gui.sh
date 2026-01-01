@@ -1,6 +1,6 @@
 # Necceseties
 sudo dnf install -y firefox kitty feh gedit lshw-gui xev pavucontrol network-manager-applet arandr vlc mpv qbittorrent cool-retro-term syncthing nyancat gnome-tweaks dconf-editor flatpak seahorse krita torbrowser-launcher sqlitebrowser # GUI applications
-sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst aircrack-ng pulseaudio pipewire texlive-scheme-full pandoc httrack --skip-broken # Gotta do --skip-broken cause of pulseaudio and pipewire
+sudo dnf install -y xdotool wmctrl brightnessctl xbacklight pamixer scrot dunst aircrack-ng pulseaudio pipewire texlive-scheme-full pandoc httrack libheif-tools --skip-broken # Gotta do --skip-broken cause of pulseaudio and pipewire
 sudo dnf install -y plank plank-docklets rofi xfdashboard polybar oneko # Ricing
 sudo gem install fusuma
 flatpak install flathub org.gnome.Extensions
@@ -52,6 +52,9 @@ cp settings.ini ~/.config/gtk-3.0
 # chmod +x ./eww
 # mv ./eww ~/.local/bin
 
+
+# Set thunar as default file manager
+xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
 
 # Brave (https://brave.com/en-in/linux/#fedora-rockyrhel)
 sudo dnf install -y dnf-plugins-core
@@ -156,6 +159,9 @@ wget https://github.com/jgraph/drawio-desktop/releases/download/v23.0.2/drawio-x
 sudo dnf install -y drawio.rpm
 rm drawio.rpm
 
+# Waydroid
+sudo dnf install -y waydroid
+sudo systemctl disable waydroid-container
 
 # # MongoDB (and Compass) (https://www.mongodb.com/docs/v2.4/tutorial/install-mongodb-on-linux/)
 # https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/
