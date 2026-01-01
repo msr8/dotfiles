@@ -29,7 +29,13 @@ PS1='\[\e[0;2;38;5;226m\]\$ \[\e[0;1;38;5;154m\]$(locip) \[\e[0;2;38;5;157m\]in 
 
 export PS1
 
+
+
 # -------------------- ZOXIDE --------------------
 eval "$(zoxide init bash)"
+# -------------------- BLESH --------------------
+source ~/.local/share/blesh/ble.sh
+
+
 
 c

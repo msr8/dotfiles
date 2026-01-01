@@ -22,19 +22,40 @@ pip install thefuck trash-cli yt-dlp
 
 
 
-# -------------------- Configs --------------------
+# -------------------- Cloning dotfiles --------------------
 mkdir ~/repos
 cd ~/repos
 git clone https://github.com/msr8/dotfiles
 cd ~
 
+
+
+# -------------------- Configs --------------------
 cd ~/.config
 mkdir blesh neofetch nvim
 cp ~/repos/dotfiles/config/bashrc-phone ~/.bashrc
-cp ~/repos/dotfiles/config/ble.sh ~/.local/share/blesh/ble.sh
+cp ~/repos/dotfiles/config/blesh/init.sh ~/.config/blesh/init.sh
 cp ~/repos/dotfiles/config/neofetch/config.conf ~/.config/neofetch/config.conf
 cp -r ~/repos/dotfiles/config/nvim/* ~/.config/nvim/
 cd ~
+
+
+
+# -------------------- Scripts --------------------
+mkdir ~/scripts
+cp ~/repos/dotfiles/scripts/* ~/scripts/
+chmod +x ~/scripts/*
+cd ~
+
+
+
+# -------------------- Ble.sh --------------------
+cd ~/repos
+git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
+make -C ble.sh install PREFIX=~/.local
+cd ~
+
+
 
 
 
