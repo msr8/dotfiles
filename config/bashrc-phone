@@ -18,8 +18,9 @@ alias pdfcombine="gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.
 
 alias c='vim +q'
 
-# ---------- PS1 ----------
 
+
+# -------------------- PS1 --------------------
 # https://github.com/arsdever/prompt_awesome
 # # Simple
 # PS1='\[\e[0;2m\]\$ \[\e[0m\]\u\[\e[0;2m\]@\[\e[0m\]\h \[\e[0m\](\[\e[0m\]\W\[\e[0m\]) \[\e[0;1m\]~ \[\e[0m\]'
@@ -28,7 +29,7 @@ PS1='\[\e[0;2;38;5;226m\]\$ \[\e[0;1;38;5;154m\]$(locip) \[\e[0;2;38;5;157m\]in 
 
 export PS1
 
-# ---------- ZOXIDE ----------
+# -------------------- ZOXIDE --------------------
 eval "$(zoxide init bash)"
 
 c

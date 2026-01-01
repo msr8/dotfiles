@@ -1,0 +1,265 @@
+#! /usr/bin/env python
+
+from PIL import Image, ImageOps
+import cv2
+import os
+import subprocess
+from argparse import ArgumentParser
+from uuid import uuid4
+
+from pillow_heif import register_heif_opener, read_heif
+register_heif_opener()
+
+
+
+
+def is_video_file(fp: str) -> bool:
+    """Check if file is a video based on extension."""
+    video_extensions = {'.mp4', '.avi', '.mov', '.mkv', '.webm', '.flv', '.wmv', '.m4v', '.mpg', '.mpeg', '.3gp', '.ogv'}
+    _, ext = os.path.splitext(fp.lower())
+    return ext in video_extensions
+
+
+
+def calculate_padding_dimensions(w: int, h: int, w_r: int, h_r: int):
+    """Calculate padding dimensions needed to achieve target aspect ratio.
+    
+    Returns:
+        dict with keys: new_width, new_height, x_offset, y_offset, 
+                       pad_left, pad_top, pad_right, pad_bottom
+    """
+    content_ratio = w / h
+    target_ratio = w_r / h_r
+    
+    if content_ratio > target_ratio:
+        # Content is wider than target ratio; add padding to top and bottom
+        new_height = int(w * h_r / w_r)
+        pad_top = (new_height - h) // 2
+        pad_bottom = new_height - h - pad_top
+        new_width = w
+        x_offset = 0
+        y_offset = pad_top
+        pad_left = 0
+        pad_right = 0
+    else:
+        # Content is taller than target ratio; add padding to left and right
+        new_width = int(h * w_r / h_r)
+        pad_left = (new_width - w) // 2
+        pad_right = new_width - w - pad_left
+        new_height = h
+        x_offset = pad_left
+        y_offset = 0
+        pad_top = 0
+        pad_bottom = 0
+    
+    return {
+        'new_width': new_width,
+        'new_height': new_height,
+        'x_offset': x_offset,
+        'y_offset': y_offset,
+        'pad_left': pad_left,
+        'pad_top': pad_top,
+        'pad_right': pad_right,
+        'pad_bottom': pad_bottom
+    }
+
+
+
+def generate_output_filename(fp: str, w_r: int, h_r: int, default_ext: str = None):
+    """Generate output filename with aspect ratio suffix.
+    
+    Args:
+        fp: Input file path
+        w_r: Target width ratio
+        h_r: Target height ratio
+        default_ext: Default extension to use (if None, uses original extension)
+    
+    Returns:
+        Output file path
+    """
+    fp_dir = os.path.dirname(fp)
+    fname_ext = os.path.basename(fp)
+    fname, fext = os.path.splitext(fname_ext)
+    ext = default_ext if default_ext else fext
+    return os.path.join(fp_dir, f'{fname} {w_r}-{h_r}.{ext}')
+
+
+
+# https://stackoverflow.com/questions/44231209/resize-rectangular-image-to-square-keeping-ratio-and-fill-background-with-black
+def resize_img(fp:str, w_r:int, h_r:int, out_ext:str) -> str:
+    _, ext   = os.path.splitext(fp.lower())
+    # Makes an Image obj
+    im       = Image.open(fp)
+    fill_col = (0, 0, 0, 0)
+    w,h      = im.size
+
+    # # Resizes it
+    # new_w    = int(h * (w_r / h_r)) if w < h else w
+    # new_h    = int(w * (h_r / w_r)) if w > h else h
+    # # size     = max(x, y)
+    # new_im   = Image.new('RGBA', (max(new_w, w), max(new_h, h)), fill_col)
+    # im       = im.resize((new_w, new_h), Image.ANTIALIAS)
+    # # Puts it in the center of a black square
+    # new_im.paste(im, (int((max(new_w, w) - new_w) / 2), int((max(new_h, h) - new_h) / 2)))
+    # # Saves it
+    # new_fp = f'{os.path.splitext(fp)[0]}_resized.png'
+    # new_im.save(new_fp)
+
+    new_fp = generate_output_filename(fp, w_r, h_r, default_ext=out_ext)
+
+    # Pad the image ONLY if required
+    if (w / h) != (w_r / h_r):
+        # Calculate the padding needed to achieve the desired aspect ratio
+        padding_dims = calculate_padding_dimensions(im.width, im.height, w_r, h_r)
+        padding = (padding_dims['pad_left'], padding_dims['pad_top'], 
+                padding_dims['pad_right'], padding_dims['pad_bottom'])
+
+        # Apply padding to image
+        im = ImageOps.expand(im, padding, fill_col)
+
+    # if os.path.exists(new_fp): new_fp = new_fp.replace('.png', f'_{uuid4().hex}.png')
+    # Needed for exif data preservation
+    exif_data = im.info.get("exif")
+    icc_data  = im.info.get('icc_profile')
+    
+    kwargs = {
+        'quality': 100,
+        'subsampling': 0,
+        'progressive': True
+    }
+    if exif_data: kwargs['exif'] = exif_data
+    if icc_data:  kwargs['icc_profile'] = icc_data
+    im.save(new_fp, **kwargs) 
+    return new_fp
+
+
+
+def resize_video(fp: str, w_r: int, h_r: int):
+    """Add black borders to video to achieve target aspect ratio using ffmpeg."""
+
+    new_fp = generate_output_filename(fp, w_r, h_r)
+
+
+    # One-line ffmpeg magic: automatically detect if padding should be horizontal or vertical
+    pad_filter = (
+        f"pad='if(gt(iw/ih,{w_r}/{h_r}),iw,ih*({w_r}/{h_r})):"
+        f"if(gt(iw/ih,{w_r}/{h_r}),iw/({w_r}/{h_r}),ih):"
+        f"(ow-iw)/2:(oh-ih)/2:black'"
+    )
+
+
+    ffmpeg_cmd = [
+        'ffmpeg', '-y', '-i', fp,
+        '-vf', pad_filter,
+        '-c:a', 'copy',
+        new_fp
+    ]
+
+    try:
+        subprocess.run(ffmpeg_cmd, check=True, capture_output=True)
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(
+            f"ffmpeg failed:\n{e.stderr.decode(errors='ignore') if e.stderr else 'Unknown error'}"
+        )
+
+    return new_fp
+
+
+
+    # # # Get video dimensions using ffprobe
+    # # probe_cmd = [
+    # #     'ffprobe', '-v', 'error', '-select_streams', 'v:0',
+    # #     '-show_entries', 'stream=width,height', '-of', 'csv=s=x:p=0', fp
+    # # ]
+    
+    # # try:
+    # #     result = subprocess.run(probe_cmd, capture_output=True, text=True, check=True)
+    # #     w, h = map(int, result.stdout.strip().split('x'))
+    # # except (subprocess.CalledProcessError, ValueError) as e:
+    # #     raise ValueError(f"Could not get video dimensions: {e}")
+
+    # vid = cv2.VideoCapture(fp)
+    # w = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
+    # h = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
+    # print(w, h)
+    
+    # # Calculate the padding needed to achieve the desired aspect ratio
+    # padding_dims = calculate_padding_dimensions(w, h, w_r, h_r)
+    # print(padding_dims)
+    
+    # # Build ffmpeg command with pad filter
+    # # pad=width:height:x:y:color
+    # pad_filter = f"pad={padding_dims['new_width']}:{padding_dims['new_height']}:{padding_dims['x_offset']}:{padding_dims['y_offset']}:black"
+    
+    # # Generate output filename
+    # new_fp = generate_output_filename(fp, w_r, h_r)
+    
+    # # Run ffmpeg to add padding
+    # ffmpeg_cmd = [
+    #     'ffmpeg', '-i', fp,
+    #     '-vf', pad_filter,
+    #     '-c:a', 'copy',  # Copy audio without re-encoding
+    #     '-y',  # Overwrite output file if it exists
+    #     new_fp
+    # ]
+    
+    # try:
+    #     subprocess.run(ffmpeg_cmd, check=True, capture_output=True)
+    # except subprocess.CalledProcessError as e:
+    #     raise RuntimeError(f"ffmpeg failed: {e.stderr.decode() if e.stderr else 'Unknown error'}")
+    
+    # return new_fp
+
+
+parser = ArgumentParser()
+parser.add_argument('input',   type=str, nargs='+', help='Input image or video file paths')
+parser.add_argument('--ratio', type=str, default='1:1', nargs='?', help='Aspect ratio (width/height) to resize images/videos to')
+parser.add_argument('--ext',   type=str, default='png', nargs='?', help='Output image extension (default: png)')
+args = parser.parse_args()
+
+# print(args)
+# exit()
+if not args.input:
+    print('No input files provided. Exiting.')
+    exit(1)
+
+
+ratio = args.ratio
+w_r, h_r = map(int, ratio.split(':')) 
+
+for fp in sorted(args.input):
+    if not os.path.exists(fp):
+        print(f'Warning: File not found: {fp}')
+        continue
+    
+    # try:
+    if is_video_file(fp):
+        new_fp = resize_video(fp, w_r, h_r)
+        print(f'Resized video saved to: {new_fp}')
+    else:
+        new_fp = resize_img(fp, w_r, h_r, args.ext)
+        print(f'Resized image saved to: {new_fp}')
+    # except Exception as e:
+    #     print(f'Error processing {fp}: {e}')
+
+
+
+
+
+
+
+
+
+
+# for dir in dirs:
+#     os.makedirs(f'CONVERTED/{dir}', exist_ok=True)
+
+#     for fn_ext in os.listdir(f'RAW_DATA/{dir}'):   
+#         if fn_ext.startswith('.'): continue
+        
+#         fn = fn_ext.split('.')[0]
+#         fp = f'RAW_DATA/{dir}/{fn_ext}'
+#         new_fp = f'CONVERTED/{dir}/{fn}.png'
+        
+
+#         resize_img(fp, new_fp)

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -e
+
+
+random=1td56ewftgubysaudvtysnhabgvfyWTUGIYIJO.mp4
+
+# # Get the link to the reel
+# url=$1
+
+# Loop over all arguments (each one should be a URL)
+for url in "$@"; do
+    # Use the --print filename option to get the filename
+    echo "Downloading video"
+    filename=$(yt-dlp --cookies-from-browser firefox --print after_move:filename $url)
+
+    # Find the cropping dimensions
+    echo "Finding crop dimensions"
+    crop=$(ffmpeg -i "$filename" -vf cropdetect -f null - 2>&1 | awk '/crop/ { print $NF }' | tail -1)
+
+    # Process the video so that it can be sent via whatsapp and stuff
+    echo "Processing \"$filename\""
+
+    # If crop ends with :0:0, we dont need to crop the vid
+    # echo $crop
+    if [[ $crop == *:0:0 ]]; then
+        echo "(No cropping required)"
+        ffmpeg -i "$filename" -c:a copy -hide_banner -loglevel quiet $random
+    else
+        ffmpeg -i "$filename" -c:a copy -vf "$crop" -hide_banner -loglevel quiet $random
+    fi
+
+    mv $random "$filename"
+
+    echo -e "Saved as \"$filename\"\n"
+done
+

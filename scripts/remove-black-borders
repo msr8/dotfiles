@@ -1,0 +1,24 @@
+set -e
+
+random="bsgvcfgvabhnjdnhbgvbhnjk.mp4"
+
+for INPUT in "$@"; do
+    crop=$(ffmpeg -i "$INPUT" -vf cropdetect -f null - 2>&1 | awk '/crop/ { print $NF }' | tail -1)
+
+    # # If --display is used anywhere, display the crop values and exit
+    # if [[ $* == *--display* ]]; then
+    #     echo $crop
+    #     exit 0
+    # fi
+
+    # If crop ends with :0:0, we dont need to crop the vid
+    if [[ $crop == *:0:0 ]]; then
+        echo "$INPUT needs no cropping"
+    else
+        echo "$INPUT => $crop"
+        # c:a means copy the audio stream rather than re-encoding it
+        ffmpeg -i "$INPUT" -c:a copy -vf "$crop" -hide_banner -loglevel quiet $random
+        mv $random "$INPUT"
+    fi
+
+done

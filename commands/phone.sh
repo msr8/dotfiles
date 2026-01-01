@@ -21,15 +21,20 @@ pip install rich sty tqdm requests flask flask_restful flask_session
 pip install thefuck trash-cli yt-dlp
 
 
+
 # -------------------- Configs --------------------
 mkdir ~/repos
 cd ~/repos
 git clone https://github.com/msr8/dotfiles
 cd ~
 
-cp .bashrc-phone ~/.bashrc
 cd ~/.config
-mkdir neofetch nvim
+mkdir blesh neofetch nvim
+cp ~/repos/dotfiles/config/bashrc-phone ~/.bashrc
+cp ~/repos/dotfiles/config/ble.sh ~/.local/share/blesh/ble.sh
+cp ~/repos/dotfiles/config/neofetch/config.conf ~/.config/neofetch/config.conf
+cp -r ~/repos/dotfiles/config/nvim/* ~/.config/nvim/
+cd ~
 
 
 

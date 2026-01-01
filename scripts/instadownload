@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 from instagrapi import Client
 
 from argparse   import ArgumentParser
@@ -8,12 +8,16 @@ import subprocess as sp
 parser = ArgumentParser()
 parser.add_argument('url', help='URL of the post to download')
 args = parser.parse_args()
-url  = args.url
+url = args.url
 
 
 cl       = Client()
 media_pk = cl.media_pk_from_url(url)
-media    = cl.media_info(media_pk)
+# media    = cl.media_info_a1(media_pk)
+# media    = cl.media_info(media_pk)
+
+cl.video_download(media_pk)
+exit()
 
 if media.media_type == 1:
     cl.photo_download(media_pk)
