@@ -10,3 +10,9 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
+
+" https://vi.stackexchange.com/questions/45122/why-is-my-terminal-background-color-changing-now-when-i-start-neovim-0-10
+highlight Normal guibg=NONE guifg=NONE ctermbg=NONE ctermfg=NONE
+
+
+
