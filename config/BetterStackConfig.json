@@ -1,0 +1,21 @@
+{
+"Product": 5,
+"Packaging": 5,
+"Growing": 10,
+"Tools": 1,
+"Furniture": 10,
+"Lighting": 10,
+"Cash": 1,
+"Consumable": 5,
+"Equipment": 1,
+"Ingredient": 5,
+"Decoration": 1,
+"Clothing": 1,
+
+"CocaLeaf": 5,
+
+"MixingStationCapacity": 1,
+"MixingStationSpeed": 1,
+
+"DryingRackCapacity": 1
+}
